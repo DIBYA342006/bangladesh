@@ -1,699 +1,1825 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bangladesh History & Liberation Study Guide</title>
-    <style>
-        /* Reset and Base Styles */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bangladesh's Big Brave Adventure! • Kids History Fun</title>
+  
+  <!-- Google Fonts: Fredoka (Chunky, Playful) and Quicksand (Rounded, Super Readable) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Phosphor Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
-        body {
-            background-color: #f7f9fa;
-            color: #2c3e50;
-            line-height: 1.65;
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            fredoka: ['"Fredoka"', 'cursive', 'sans-serif'],
+            quicksand: ['"Quicksand"', 'sans-serif'],
+          },
+          colors: {
+            candyGreen: '#00A86B',
+            candyGreenDark: '#007A4D',
+            candyRed: '#FF4757',
+            candyRedDark: '#E02636',
+            mangoYellow: '#FFA502',
+            sunYellow: '#FFD32A',
+            skyBlue: '#2ED573',
+            cloudBlue: '#70A1FF',
+            oceanBlue: '#1E90FF',
+            bubbleGum: '#FF78C4',
+            candyPurple: '#A55EEA',
+            creamSoft: '#FFF9E6',
+            cardBg: '#FFFFFF',
+          },
+          boxShadow: {
+            'bouncy': '0 8px 0px rgba(0, 0, 0, 0.12), 0 15px 25px rgba(0, 0, 0, 0.08)',
+            'bouncy-hover': '0 12px 0px rgba(0, 0, 0, 0.15), 0 20px 30px rgba(0, 0, 0, 0.12)',
+            'btn-3d': '0 6px 0px rgba(0, 0, 0, 0.2)',
+            'btn-3d-active': '0 2px 0px rgba(0, 0, 0, 0.2)',
+          }
         }
+      }
+    }
+  </script>
 
-        /* Top Banner & Navigation */
-        .top-stripe {
-            background-color: #c91c32;
-            height: 6px;
-            width: 100%;
-        }
+  <style>
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: #FFFDF4;
+      background-image: 
+        radial-gradient(#FFEAA7 1.5px, transparent 1.5px),
+        linear-gradient(to bottom, #FFFDF4, #FFF6D6);
+      background-size: 28px 28px, 100% 100%;
+      color: #2F3542;
+    }
 
-        nav {
-            background: #006a4e;
-            color: white;
-            padding: 14px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 99;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-        }
+    h1, h2, h3, h4, .font-fun {
+      font-family: 'Fredoka', cursive, sans-serif;
+    }
 
-        nav h1 {
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
+    /* Bouncy animations */
+    @keyframes floaty {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(2deg); }
+    }
+    .animate-float {
+      animation: floaty 3s ease-in-out infinite;
+    }
 
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 16px;
-        }
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(-3deg); }
+      50% { transform: rotate(3deg); }
+    }
+    .animate-wiggle {
+      animation: wiggle 2s ease-in-out infinite;
+    }
 
-        nav a {
-            color: #ecf0f1;
-            text-decoration: none;
-            font-size: 0.9rem;
-            padding: 6px 10px;
-            border-radius: 4px;
-            transition: background 0.2s;
-        }
+    /* Flip Card 3D */
+    .perspective-1000 {
+      perspective: 1000px;
+    }
+    .transform-style-preserve-3d {
+      transform-style: preserve-3d;
+    }
+    .backface-hidden {
+      backface-visibility: hidden;
+    }
+    .rotate-y-180 {
+      transform: rotateY(180deg);
+    }
 
-        nav a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            color: #fff;
-        }
-
-        /* Hero / Header */
-        header {
-            background: linear-gradient(135deg, #00523c, #006a4e);
-            color: white;
-            padding: 50px 20px 40px;
-            text-align: center;
-        }
-
-        header h2 {
-            font-size: 2.2rem;
-            margin-bottom: 12px;
-            font-weight: 700;
-        }
-
-        header p {
-            max-width: 760px;
-            margin: 0 auto 18px;
-            font-size: 1.05rem;
-            color: #d1fae5;
-        }
-
-        .jump-links {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-top: 15px;
-        }
-
-        .jump-links a {
-            background: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: white;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            text-decoration: none;
-        }
-
-        .jump-links a:hover {
-            background: white;
-            color: #006a4e;
-        }
-
-        /* Main Container */
-        .wrapper {
-            max-width: 960px;
-            margin: 30px auto;
-            padding: 0 16px;
-        }
-
-        /* Standard Card Section */
-        section {
-            background: #ffffff;
-            border: 1px solid #e1e8ed;
-            border-radius: 8px;
-            padding: 28px;
-            margin-bottom: 28px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
-        }
-
-        section h2 {
-            color: #006a4e;
-            font-size: 1.55rem;
-            padding-bottom: 8px;
-            border-bottom: 2px solid #eef2f5;
-            margin-bottom: 18px;
-        }
-
-        section h3 {
-            color: #c91c32;
-            font-size: 1.15rem;
-            margin: 20px 0 10px;
-        }
-
-        p {
-            margin-bottom: 14px;
-            color: #444;
-            font-size: 1rem;
-        }
-
-        /* Structured Facts & Callout Boxes */
-        .callout-box {
-            background: #edf7f3;
-            border-left: 4px solid #006a4e;
-            padding: 14px 18px;
-            border-radius: 0 6px 6px 0;
-            margin: 18px 0;
-            font-size: 0.95rem;
-        }
-
-        .callout-box strong {
-            color: #00523c;
-        }
-
-        /* Timeline list styling */
-        .history-list {
-            list-style: none;
-            margin-top: 15px;
-        }
-
-        .history-item {
-            padding: 14px 16px 14px 20px;
-            border-left: 3px solid #c91c32;
-            background: #fafbfc;
-            margin-bottom: 12px;
-            border-radius: 0 6px 6px 0;
-        }
-
-        .history-item strong {
-            display: inline-block;
-            color: #111;
-            margin-bottom: 4px;
-        }
-
-        /* Key Terms Table */
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 18px 0;
-            font-size: 0.92rem;
-        }
-
-        .data-table th, .data-table td {
-            border: 1px solid #e1e8ed;
-            padding: 10px 14px;
-            text-align: left;
-        }
-
-        .data-table th {
-            background-color: #f1f5f8;
-            color: #333;
-            font-weight: 600;
-        }
-
-        .data-table tr:nth-child(even) {
-            background-color: #fafbfc;
-        }
-
-        /* Accordion Collapsible Notes */
-        .accordion-btn {
-            background: #f1f5f8;
-            border: 1px solid #d8e2e9;
-            color: #2c3e50;
-            cursor: pointer;
-            padding: 12px 16px;
-            width: 100%;
-            text-align: left;
-            font-size: 0.95rem;
-            font-weight: 600;
-            border-radius: 6px;
-            margin-top: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .accordion-btn:hover {
-            background: #e4ecf1;
-        }
-
-        .accordion-content {
-            display: none;
-            padding: 15px 18px;
-            border: 1px solid #e1e8ed;
-            border-top: none;
-            background: white;
-            border-radius: 0 0 6px 6px;
-            font-size: 0.92rem;
-            color: #555;
-        }
-
-        /* Flashcard Grid */
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 14px;
-            margin: 18px 0;
-        }
-
-        .info-card {
-            background: #ffffff;
-            border: 1px solid #e1e8ed;
-            border-radius: 6px;
-            padding: 16px;
-            border-top: 3px solid #006a4e;
-        }
-
-        .info-card h4 {
-            color: #006a4e;
-            font-size: 1rem;
-            margin-bottom: 6px;
-        }
-
-        .info-card p {
-            font-size: 0.88rem;
-            margin-bottom: 0;
-            color: #555;
-        }
-
-        /* Activity Section */
-        .activity-container {
-            background: #fffdf7;
-            border: 2px dashed #d6b26d;
-            border-radius: 8px;
-            padding: 22px;
-            margin-top: 20px;
-        }
-
-        .quiz-option {
-            background: #ffffff;
-            border: 1px solid #ced4da;
-            padding: 8px 14px;
-            border-radius: 4px;
-            margin: 4px 6px 4px 0;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: all 0.15s;
-        }
-
-        .quiz-option:hover {
-            background-color: #e9ecef;
-        }
-
-        .quiz-feedback {
-            margin-top: 8px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            display: none;
-        }
-
-        /* Canvas pad */
-        #sketchPad {
-            border: 1px solid #999;
-            background: #ffffff;
-            border-radius: 4px;
-            margin: 12px 0;
-            cursor: crosshair;
-            display: block;
-        }
-
-        .tool-btn {
-            background: #006a4e;
-            color: white;
-            border: none;
-            padding: 8px 14px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.88rem;
-            margin-right: 6px;
-        }
-
-        .tool-btn:hover {
-            background: #004d38;
-        }
-
-        .tool-btn.btn-red {
-            background: #c91c32;
-        }
-
-        .tool-btn.btn-red:hover {
-            background: #a31527;
-        }
-
-        .tool-btn.btn-clear {
-            background: #6c757d;
-        }
-
-        .tool-btn.btn-clear:hover {
-            background: #5a6268;
-        }
-
-        /* Footer */
-        footer {
-            background: #ffffff;
-            border-top: 1px solid #e1e8ed;
-            padding: 30px 20px;
-            text-align: center;
-            color: #6c757d;
-            font-size: 0.88rem;
-            margin-top: 40px;
-        }
-
-        @media (max-width: 650px) {
-            nav {
-                flex-direction: column;
-                gap: 10px;
-            }
-            .jump-links {
-                display: none;
-            }
-        }
-    </style>
+    /* Custom cute scrollbar */
+    ::-webkit-scrollbar {
+      width: 14px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FFEAA7;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #FF4757;
+      border-radius: 999px;
+      border: 3px solid #FFEAA7;
+    }
+  </style>
 </head>
-<body>
+<body class="selection:bg-sunYellow selection:text-candyRedDark overflow-x-hidden">
 
-    <div class="top-stripe"></div>
+  <!-- 1. TOP STICKY EXPLORER BAR -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b-4 border-mangoYellow px-3 sm:px-6 py-2.5 shadow-md">
+    <!-- Real-Time Scroll Progress Indicator -->
+    <div id="scrollProgressBar" class="absolute bottom-0 left-0 h-1.5 bg-gradient-to-r from-candyRed via-sunYellow to-candyGreen transition-all duration-75 w-0"></div>
 
-    <!-- Navigation Bar -->
-    <nav>
-        <h1>Bangladesh Studies Revision Portal</h1>
-        <ul>
-            <li><a href="#movement">1952 Movement</a></li>
-            <li><a href="#war">1971 Liberation War</a></li>
-            <li><a href="#timeline">Chronology</a></li>
-            <li><a href="#symbols">National Symbols</a></li>
-            <li><a href="#quiz">Practice Quiz</a></li>
-        </ul>
-    </nav>
-
-    <!-- Header / Banner -->
-    <header>
-        <h2>The History & Independence of Bangladesh</h2>
-        <p>A comprehensive study module outlining the 1952 Language Movement, the 1971 Liberation War, key historical leaders, and review activities.</p>
-        <div class="jump-links">
-            <a href="#movement">Language Movement</a>
-            <a href="#causes">Roots & Causes</a>
-            <a href="#war">1971 Events</a>
-            <a href="#timeline">Milestone Timeline</a>
-            <a href="#quiz">Student Activities</a>
+    <div class="max-w-6xl mx-auto flex items-center justify-between gap-2">
+      
+      <!-- Mascot Logo Brand -->
+      <a href="#hero" class="flex items-center gap-2 group">
+        <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-sunYellow border-2 border-amber-600 flex items-center justify-center text-2xl shadow animate-bounce">
+          🐯
         </div>
-    </header>
+        <div>
+          <span class="font-fun text-base sm:text-xl font-bold text-candyGreen tracking-tight block">
+            Bangladesh Adventure!
+          </span>
+          <span class="text-[11px] font-bold text-candyRed flex items-center gap-1">
+            <span>🇧🇩</span> With Shadhin & Tuntuni
+          </span>
+        </div>
+      </a>
 
-    <div class="wrapper">
+      <!-- Quick Station Jumps (Desktop) -->
+      <nav class="hidden md:flex items-center gap-1.5 font-fun text-xs">
+        <a href="#stop-intro" class="px-2.5 py-1.5 rounded-full bg-creamSoft hover:bg-sunYellow/40 text-stone-700 font-bold transition-all">🌍 Rivers</a>
+        <a href="#stop-language" class="px-2.5 py-1.5 rounded-full bg-creamSoft hover:bg-sunYellow/40 text-stone-700 font-bold transition-all">🗣️ 1952 Words</a>
+        <a href="#stop-speech" class="px-2.5 py-1.5 rounded-full bg-creamSoft hover:bg-sunYellow/40 text-stone-700 font-bold transition-all">📢 March 7 Voice</a>
+        <a href="#stop-war" class="px-2.5 py-1.5 rounded-full bg-creamSoft hover:bg-sunYellow/40 text-stone-700 font-bold transition-all">🦸 1971 Heroes</a>
+        <a href="#game-boat" class="px-2.5 py-1.5 rounded-full bg-skyBlue/30 hover:bg-skyBlue/50 text-emerald-950 font-bold transition-all">⛵ Boat Game</a>
+        <a href="#game-memory" class="px-2.5 py-1.5 rounded-full bg-bubbleGum/30 hover:bg-bubbleGum/50 text-pink-950 font-bold transition-all">🃏 Cards</a>
+        <a href="#stop-flag" class="px-2.5 py-1.5 rounded-full bg-creamSoft hover:bg-sunYellow/40 text-stone-700 font-bold transition-all">🎨 Flag Painter</a>
+      </nav>
 
-        <!-- Section 1: Overview & 1952 Language Movement -->
-        <section id="movement">
-            <h2>1. The Language Movement (Bhasha Andolon) — 1952</h2>
-            <p>
-                In 1952, a major movement started for protecting the mother language of Bangladeshis (Bangla). 
-                Following the 1947 partition of the Indian subcontinent, Pakistan was created in two geographically, culturally, 
-                and linguistically distinct wings: West Pakistan and East Pakistan (now Bangladesh). 
-            </p>
-            <p>
-                Despite the majority of the total population residing in East Pakistan and speaking Bengali, the central leadership 
-                declared Urdu as the sole national language of Pakistan. Students and intellectuals organized peaceful processions, 
-                demanding official recognition for Bengali.
-            </p>
+      <!-- Star Counter & Sound Toggle -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Golden Star Counter -->
+        <div class="flex items-center gap-1.5 bg-gradient-to-r from-sunYellow to-mangoYellow px-3 py-1.5 rounded-full border-2 border-amber-600 shadow-sm">
+          <span class="text-lg">⭐</span>
+          <span id="starCounter" class="font-fun font-bold text-base text-amber-950">0</span>
+          <span class="text-xs font-bold text-amber-900 hidden sm:inline">Stars</span>
+        </div>
 
-            <div class="callout-box">
-                <strong>Crucial Milestone:</strong> On February 21, 1952, police fired upon student protesters near Dhaka University. 
-                Martyrs including Rafiq, Salam, Barkat, and Jabbar sacrificed their lives. In recognition of this struggle, 
-                <strong>UNESCO declared February 21 as International Mother Language Day</strong>, now observed globally each year[cite: 1].
-            </div>
-
-            <p>
-                The Language Movement is regarded as the cultural seed that grew into the political demand for complete self-determination and eventual independence.
-            </p>
-        </section>
-
-        <!-- Section 2: Background Causes of the 1971 War -->
-        <section id="causes">
-            <h2>2. Background & Roots of the Conflict</h2>
-            <p>
-                The struggle was not sudden; it developed over two decades due to systemic inequality between West and East Pakistan:
-            </p>
-
-            <div class="card-grid">
-                <div class="info-card">
-                    <h4>Political Neglect</h4>
-                    <p>East Pakistan had the larger population, yet central government power and high offices were dominated by leaders in West Pakistan.</p>
-                </div>
-                <div class="info-card">
-                    <h4>Economic Disparity</h4>
-                    <p>Revenue generated from East Pakistani exports (such as raw jute and tea) was disproportionately spent on Western development projects.</p>
-                </div>
-                <div class="info-card">
-                    <h4>1970 Cyclone Response</h4>
-                    <p>When the Bhola Cyclone devastated East Pakistan in November 1970, the sluggish central relief effort alienated the Bengali population.</p>
-                </div>
-                <div class="info-card">
-                    <h4>The 1970 Elections</h4>
-                    <p>The Awami League won an outright democratic majority, yet the military regime refused to convene the assembly or transfer authority[cite: 1].</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 3: The 1971 Liberation War Details -->
-        <section id="war">
-            <h2>3. The 1971 Liberation War</h2>
-            <p>
-                After a long 9-month war, the people claimed their liberation[cite: 1]. The 1971 Bangladesh Liberation War 
-                was a conflict that resulted in the separation of East Pakistan and the creation of the independent 
-                nation of Bangladesh[cite: 1].
-            </p>
-
-            <h3>Core Summary Breakdown:</h3>
-            <ul class="history-list">
-                <li class="history-item">
-                    <strong>Causes:</strong> Decades of political, economic, and cultural discrimination by West Pakistan against the Bengali majority in East Pakistan culminated in the denial of power to Sheikh Mujibur Rahman's Awami League, which won the 1970 elections[cite: 1].
-                </li>
-                <li class="history-item">
-                    <strong>Conflict & Atrocities:</strong> On March 25, 1971, the Pakistani military launched <em>Operation Searchlight</em>, causing massive casualties and forcing 10 million refugees into India[cite: 1]. Sheikh Mujibur Rahman declared independence on March 26[cite: 1].
-                </li>
-                <li class="history-item">
-                    <strong>Resistance:</strong> The Bengali guerrilla force, the <em>Mukti Bahini</em>, fought the Pakistani army with training, arms, and sanctuary provided by India[cite: 1]. They operated across rivers, rural paths, and towns to disrupt military supply lines.
-                </li>
-                <li class="history-item">
-                    <strong>Indian Intervention:</strong> Following preemptive airstrikes by Pakistan on December 3, 1971, India entered the war directly, forming a joint command with the Mukti Bahini[cite: 1].
-                </li>
-                <li class="history-item">
-                    <strong>Outcome:</strong> Facing defeat, the Pakistani military surrendered unconditionally on December 16, 1971, when Lieutenant General A. A. K. Niazi signed the Instrument of Surrender in Dhaka, yielding 93,000 troops[cite: 1].
-                </li>
-            </ul>
-        </section>
-
-        <!-- Section 4: Chronological Summary Table -->
-        <section id="timeline">
-            <h2>4. Chronological Reference Table</h2>
-            <p>Use this reference table to memorize the primary dates for tests and exams:</p>
-
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th style="width: 25%;">Date / Period</th>
-                        <th style="width: 35%;">Historical Event</th>
-                        <th style="width: 40%;">Significance</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>February 21, 1952</td>
-                        <td>Language Movement Protest</td>
-                        <td>Protesters gave their lives for Bangla; recognized as International Mother Language Day[cite: 1].</td>
-                    </tr>
-                    <tr>
-                        <td>December 7, 1970</td>
-                        <td>General Elections</td>
-                        <td>Awami League won the democratic majority across Pakistan[cite: 1].</td>
-                    </tr>
-                    <tr>
-                        <td>March 7, 1971</td>
-                        <td>Historic Racecourse Speech</td>
-                        <td>Bangabandhu addressed the public: "The struggle this time is for our freedom."</td>
-                    </tr>
-                    <tr>
-                        <td>March 25, 1971</td>
-                        <td>Operation Searchlight</td>
-                        <td>Military crackdown launched in Dhaka; widespread violence began[cite: 1].</td>
-                    </tr>
-                    <tr>
-                        <td>March 26, 1971</td>
-                        <td>Declaration of Independence</td>
-                        <td>Bangladesh officially declared an independent nation (Independence Day)[cite: 1].</td>
-                    </tr>
-                    <tr>
-                        <td>April 17, 1971</td>
-                        <td>Mujibnagar Government</td>
-                        <td>First provisional government formed to lead the diplomatic and military effort.</td>
-                    </tr>
-                    <tr>
-                        <td>December 3, 1971</td>
-                        <td>Formal Joint Command</td>
-                        <td>Indian forces entered the war alongside Mukti Bahini following airstrikes[cite: 1].</td>
-                    </tr>
-                    <tr>
-                        <td>December 16, 1971</td>
-                        <td>Bijoy Dibosh (Victory Day)</td>
-                        <td>Instrument of Surrender signed; 93,000 soldiers surrendered in Dhaka[cite: 1].</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <!-- Accordion items for extra reading -->
-            <button class="accordion-btn" onclick="toggleAccordion('acc1')">
-                <span>Who were the Mukti Bahini?</span>
-                <span>+</span>
-            </button>
-            <div id="acc1" class="accordion-content">
-                The Mukti Bahini (Liberation Army) was composed of regular military soldiers, police personnel, students, farmers, and everyday citizens. They used asymmetric guerrilla tactics across the delta's rivers, disrupting transport convoys and protecting civilian areas until the formal joint advance in December[cite: 1].
-            </div>
-
-            <button class="accordion-btn" onclick="toggleAccordion('acc2')">
-                <span>What is the Shaheed Minar?</span>
-                <span>+</span>
-            </button>
-            <div id="acc2" class="accordion-content">
-                The Central Shaheed Minar in Dhaka is the national monument erected to honor the martyrs of the 1952 Language Movement. Every year on February 21 at dawn, people walk barefoot to place flowers at its base during the *Prabhat Pheri* memorial procession.
-            </div>
-        </section>
-
-        <!-- Section 5: National Symbols & Identity -->
-        <section id="symbols">
-            <h2>5. National Symbols & Significance</h2>
-            <div class="card-grid">
-                <div class="info-card">
-                    <h4>The National Flag</h4>
-                    <p>A green field representing the lush landscape of the country, with a red circle representing the rising sun and the blood sacrificed for freedom.</p>
-                </div>
-                <div class="info-card">
-                    <h4>National Emblem</h4>
-                    <p>Features the Shapla (Water Lily) resting on water, flanked on both sides by paddy sheaves and crowned by three tea leaves and four stars.</p>
-                </div>
-                <div class="info-card">
-                    <h4>National Anthem</h4>
-                    <p><em>"Amar Shonar Bangla"</em> (My Golden Bengal), written by Rabindranath Tagore in 1905, was officially adopted as the anthem in 1971.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 6: Interactive Student Revision & Quiz -->
-        <section id="quiz">
-            <h2>6. Student Self-Assessment & Activity</h2>
-            <p>Answer the revision questions below and try your hand at sketching on the scratchpad.</p>
-
-            <div class="activity-container">
-                <h3>Question 1:</h3>
-                <p><strong>Which day is recognized worldwide by UNESCO as International Mother Language Day?</strong>[cite: 1]</p>
-                <button class="quiz-option" onclick="evaluateAnswer(this, false)">March 26</button>
-                <button class="quiz-option" onclick="evaluateAnswer(this, true)">February 21</button>
-                <button class="quiz-option" onclick="evaluateAnswer(this, false)">December 16</button>
-                <div class="quiz-feedback"></div>
-            </div>
-
-            <div class="activity-container">
-                <h3>Question 2:</h3>
-                <p><strong>What was the code name of the military operation launched on the night of March 25, 1971?</strong>[cite: 1]</p>
-                <button class="quiz-option" onclick="evaluateAnswer(this, true)">Operation Searchlight</button>
-                <button class="quiz-option" onclick="evaluateAnswer(this, false)">Operation Desert Shield</button>
-                <button class="quiz-option" onclick="evaluateAnswer(this, false)">Operation Freedom</button>
-                <div class="quiz-feedback"></div>
-            </div>
-
-            <div class="activity-container">
-                <h3>Question 3:</h3>
-                <p><strong>How many Pakistani troops surrendered at the end of the Liberation War on December 16, 1971?</strong>[cite: 1]</p>
-                <button class="quiz-option" onclick="evaluateAnswer(this, false)">45,000</button>
-                <button class="quiz-option" onclick="evaluateAnswer(this, false)">100,000</button>
-                <button class="quiz-option" onclick="evaluateAnswer(this, true)">93,000</button>
-                <div class="quiz-feedback"></div>
-            </div>
-
-            <!-- Sketch / Drawing Section -->
-            <div class="activity-container" style="margin-top: 25px;">
-                <h3>Practice Sketchpad: Bangladesh Flag Colors</h3>
-                <p style="font-size: 0.9rem; color: #555;">Use the tools below to draw the bottle-green canvas and red sun circle:</p>
-                <canvas id="sketchPad" width="460" height="260"></canvas>
-                <div>
-                    <button class="tool-btn" onclick="selectColor('#006a4e')">Green Brush</button>
-                    <button class="tool-btn btn-red" onclick="selectColor('#c91c32')">Red Brush</button>
-                    <button class="tool-btn btn-clear" onclick="resetCanvas()">Clear Pad</button>
-                </div>
-            </div>
-        </section>
+        <!-- Sound FX Button -->
+        <button id="soundToggleBtn" onclick="toggleSoundFx()" class="px-2.5 sm:px-3 py-1.5 rounded-full bg-creamSoft border-2 border-stone-300 hover:border-candyGreen font-fun text-xs font-bold text-stone-700 flex items-center gap-1 transition-all active:scale-95 shadow-sm">
+          <span id="soundIcon">🔊</span>
+          <span id="soundText" class="hidden sm:inline">Sound ON</span>
+        </button>
+      </div>
 
     </div>
+  </header>
 
-    <!-- Page Footer -->
-    <footer>
-        <p><strong>Bangladesh Studies Reference Notes</strong></p>
-        <p>Compiled for student revision, homework study, and social science exam preparation.</p>
-        <p style="margin-top: 8px; font-size: 0.8rem;">&copy; 2026 Educational Resource | Reference text adapted from verified curriculum notes[cite: 1].</p>
-    </footer>
+  <!-- 2. HERO SECTION -->
+  <section id="hero" class="relative pt-8 sm:pt-14 pb-14 sm:pb-20 px-4 overflow-hidden">
+    <!-- Floating Cartoon Clouds -->
+    <div class="absolute top-6 left-5 text-4xl sm:text-6xl opacity-75 animate-float pointer-events-none">☁️</div>
+    <div class="absolute top-16 right-8 text-3xl sm:text-5xl opacity-60 animate-float pointer-events-none" style="animation-delay: 1.5s;">☁️</div>
 
-    <!-- Vanilla Javascript Logic -->
-    <script>
-        // Quiz evaluation logic
-        function evaluateAnswer(buttonElement, isCorrect) {
-            const parent = buttonElement.parentElement;
-            const feedback = parent.querySelector('.quiz-feedback');
-            feedback.style.display = 'block';
+    <div class="max-w-5xl mx-auto text-center relative z-10">
+      
+      <!-- Cheerful Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-candyGreen text-white font-fun font-bold text-sm sm:text-base shadow-bouncy -rotate-2 hover:rotate-0 transition-transform mb-4">
+        <span>🌟</span>
+        <span>A Happy, Brave History Adventure For Kids!</span>
+        <span>🇧🇩</span>
+      </div>
 
-            if (isCorrect) {
-                feedback.textContent = 'Correct answer! Excellent job.';
-                feedback.style.color = '#006a4e';
-            } else {
-                feedback.textContent = 'Incorrect. Review the notes above and try again.';
-                feedback.style.color = '#c91c32';
+      <h1 class="text-4xl sm:text-6xl md:text-7xl font-fun font-bold text-candyGreenDark tracking-tight leading-tight">
+        Welcome to Bangladesh's <br>
+        <span class="text-candyRed drop-shadow-sm">Big Brave Adventure!</span>
+      </h1>
+
+      <p class="font-quicksand font-bold text-base sm:text-xl text-stone-700 max-w-2xl mx-auto mt-4 leading-relaxed">
+        Put on your explorer hat! We are zooming through time to see how brave everyday people, singing rivers, and a special red-and-green flag created a brand-new country!
+      </p>
+
+      <!-- Animated Mascots Interaction Box -->
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+        
+        <!-- Shadhin Tiger Mascot Card -->
+        <div class="bg-white p-4 sm:p-5 rounded-3xl border-4 border-mangoYellow shadow-bouncy flex items-center gap-3.5 max-w-sm text-left transform -rotate-1 hover:rotate-0 transition-all">
+          <div class="w-16 h-16 rounded-2xl bg-amber-100 border-2 border-mangoYellow flex items-center justify-center text-4xl shrink-0 animate-wiggle">
+            🐯
+          </div>
+          <div>
+            <h4 class="font-fun font-bold text-lg text-amber-950">Shadhin the Tiger</h4>
+            <p class="text-xs text-stone-600 font-semibold">"Hi friend! I love green riverbanks and big bravery!"</p>
+          </div>
+        </div>
+
+        <!-- Tuntuni Bird Mascot Card -->
+        <div class="bg-white p-4 sm:p-5 rounded-3xl border-4 border-cloudBlue shadow-bouncy flex items-center gap-3.5 max-w-sm text-left transform rotate-1 hover:rotate-0 transition-all">
+          <div class="w-16 h-16 rounded-2xl bg-sky-100 border-2 border-cloudBlue flex items-center justify-center text-4xl shrink-0 animate-float">
+            🐦
+          </div>
+          <div>
+            <h4 class="font-fun font-bold text-lg text-sky-950">Tuntuni the Bird</h4>
+            <p class="text-xs text-stone-600 font-semibold">"I carry sweet letters and songs to guide your way!"</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Action Button to Collect First Star -->
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
+        <button id="meetMascotsBtn" onclick="meetMascots()" class="px-8 py-3.5 bg-candyRed hover:bg-candyRedDark text-white font-fun font-bold text-lg rounded-full shadow-bouncy transition-transform active:translate-y-1 flex items-center gap-2">
+          <span>👋 Say Hello & Get Your First 5 Stars!</span>
+          <span>⭐</span>
+        </button>
+        <a href="#stop-intro" class="px-6 py-3.5 bg-white hover:bg-amber-50 text-candyGreen font-fun font-bold text-base rounded-full border-3 border-candyGreen shadow-sm transition-all">
+          Start Scrolling Down 🚀
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 3. STOP 1: WHERE IN THE WORLD IS BANGLADESH? -->
+  <section id="stop-intro" class="py-14 sm:py-20 px-4 relative bg-[#E8F8F0]">
+    <div class="max-w-5xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="text-center mb-10">
+        <span class="inline-block px-4 py-1 rounded-full bg-candyGreen text-white font-fun font-bold text-xs uppercase tracking-wider mb-2">
+          Stop 1 • Geography Fun
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-fun font-bold text-candyGreenDark">
+          Where in the World is Bangladesh? 🌍
+        </h2>
+        <p class="font-quicksand font-bold text-stone-600 text-sm sm:text-base max-w-xl mx-auto mt-2">
+          It is a lush green country in South Asia shaped like a smiling leaf, hugged by big silver rivers!
+        </p>
+      </div>
+
+      <!-- 4 Big Candy Fact Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        
+        <!-- Card 1 -->
+        <div class="bg-white rounded-3xl p-5 border-4 border-candyGreen/30 shadow-bouncy text-center hover:-translate-y-1 transition-transform">
+          <div class="w-16 h-16 rounded-2xl bg-emerald-100 mx-auto flex items-center justify-center text-3xl mb-3">
+            🛶
+          </div>
+          <h3 class="font-fun font-bold text-lg text-candyGreenDark">700+ Big Rivers!</h3>
+          <p class="text-xs font-semibold text-stone-600 mt-1 leading-relaxed">
+            The Padma, Meghna, and Jamuna flow like giant water highways full of silver Hilsa fish!
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-white rounded-3xl p-5 border-4 border-mangoYellow/30 shadow-bouncy text-center hover:-translate-y-1 transition-transform">
+          <div class="w-16 h-16 rounded-2xl bg-amber-100 mx-auto flex items-center justify-center text-3xl mb-3">
+            🌴
+          </div>
+          <h3 class="font-fun font-bold text-lg text-amber-950">Sundarbans Forest</h3>
+          <p class="text-xs font-semibold text-stone-600 mt-1 leading-relaxed">
+            The largest mangrove forest in the whole world! Home to deer, monkeys, and swimming Royal Bengal Tigers!
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-white rounded-3xl p-5 border-4 border-candyRed/30 shadow-bouncy text-center hover:-translate-y-1 transition-transform">
+          <div class="w-16 h-16 rounded-2xl bg-rose-100 mx-auto flex items-center justify-center text-3xl mb-3">
+            🎨
+          </div>
+          <h3 class="font-fun font-bold text-lg text-candyRedDark">Rainbow Rickshaws</h3>
+          <p class="text-xs font-semibold text-stone-600 mt-1 leading-relaxed">
+            Cycle rickshaws painted with brilliant peacocks, flowers, and neon birds roll through every street!
+          </p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="bg-white rounded-3xl p-5 border-4 border-cloudBlue/30 shadow-bouncy text-center hover:-translate-y-1 transition-transform">
+          <div class="w-16 h-16 rounded-2xl bg-sky-100 mx-auto flex items-center justify-center text-3xl mb-3">
+            🥭
+          </div>
+          <h3 class="font-fun font-bold text-lg text-sky-950">Sweet Honey Mangoes</h3>
+          <p class="text-xs font-semibold text-stone-600 mt-1 leading-relaxed">
+            In summer, trees are loaded with Fazli and Himsagar mangoes that taste like pure golden sunshine!
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Interactive River Boat Toy -->
+      <div class="mt-10 bg-white rounded-3xl p-6 border-4 border-candyGreen shadow-bouncy text-center relative overflow-hidden">
+        <h3 class="font-fun font-bold text-xl text-candyGreenDark">
+          Interactive: Tap the Wooden River Boat (Nouka)! ⛵
+        </h3>
+        <p class="text-xs sm:text-sm font-semibold text-stone-600 mt-1">
+          Tap the boat to row across the river, splash water, and catch a hidden star!
+        </p>
+
+        <!-- River Animation Box -->
+        <div class="mt-4 relative h-28 bg-gradient-to-r from-sky-200 via-emerald-100 to-sky-300 rounded-2xl border-2 border-sky-400 flex items-center justify-center overflow-hidden">
+          <div id="riverWaves" class="absolute inset-0 flex items-center justify-around opacity-40 text-2xl pointer-events-none">
+            <span>〰️</span><span>〰️</span><span>〰️</span><span>〰️</span><span>〰️</span>
+          </div>
+          <button id="tapBoatBtn" onclick="rowRiverBoat()" class="relative z-10 text-5xl sm:text-6xl cursor-pointer hover:scale-125 transition-all transform active:scale-95" title="Click to row boat!">
+            ⛵
+          </button>
+          <span id="splashText" class="absolute bottom-2 font-fun font-bold text-oceanBlue text-xs opacity-0 transition-opacity">
+            *SPLASH!* +1 Star! 🌟
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 4. STOP 2: THE MAGIC OF OUR MOTHER LANGUAGE (1952) -->
+  <section id="stop-language" class="py-14 sm:py-20 px-4 relative">
+    <div class="max-w-5xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="text-center mb-10">
+        <span class="inline-block px-4 py-1 rounded-full bg-candyRed text-white font-fun font-bold text-xs uppercase tracking-wider mb-2">
+          Stop 2 • Brave Words
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-fun font-bold text-candyRedDark">
+          The Magic of Our Mother Language (1952) 🗣️
+        </h2>
+        <p class="font-quicksand font-bold text-stone-600 text-sm sm:text-base max-w-xl mx-auto mt-2">
+          Imagine if someone told you that you were never allowed to speak your favorite language again!
+        </p>
+      </div>
+
+      <!-- Comic / Story Bubbles Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+        
+        <!-- Left Story Cards -->
+        <div class="space-y-4">
+          
+          <div class="bg-white p-5 rounded-3xl border-4 border-amber-300 shadow-bouncy flex items-start gap-4">
+            <span class="text-3xl">🍯</span>
+            <div>
+              <h4 class="font-fun font-bold text-lg text-amber-950">Sweet Bangla Words</h4>
+              <p class="text-xs sm:text-sm font-semibold text-stone-600 leading-relaxed mt-1">
+                Bengali people loved their language, <strong>Bangla</strong>. It was the language of bedtime songs, grandmother stories, and lullabies.
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-white p-5 rounded-3xl border-4 border-candyRed/40 shadow-bouncy flex items-start gap-4">
+            <span class="text-3xl">🚫</span>
+            <div>
+              <h4 class="font-fun font-bold text-lg text-candyRedDark">The Unfair Rule</h4>
+              <p class="text-xs sm:text-sm font-semibold text-stone-600 leading-relaxed mt-1">
+                Rulers far away said: "Only Urdu will be the state language!" But more than half the people spoke Bangla! They said: "No, we want our mother language recognized too!"
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-white p-5 rounded-3xl border-4 border-candyGreen/40 shadow-bouncy flex items-start gap-4">
+            <span class="text-3xl">🌹</span>
+            <div>
+              <h4 class="font-fun font-bold text-lg text-candyGreenDark">February 21, 1952</h4>
+              <p class="text-xs sm:text-sm font-semibold text-stone-600 leading-relaxed mt-1">
+                Brave university students marched with posters of Bangla letters. They stood tall so the language could live forever. Now, UNESCO celebrates February 21 as <strong>International Mother Language Day</strong> for every country on Earth!
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right: Central Shaheed Minar Interactive Monument -->
+        <div class="bg-white rounded-3xl p-6 border-4 border-candyRed shadow-bouncy text-center relative">
+          <div class="w-12 h-12 rounded-full bg-candyRed text-white flex items-center justify-center font-bold text-xl absolute -top-4 -right-4 shadow">
+            🏛️
+          </div>
+          
+          <h3 class="font-fun font-bold text-xl text-candyRedDark">The Shaheed Minar</h3>
+          <p class="text-xs font-semibold text-stone-600 mt-1">
+            The monument shaped like a mother protecting her children.
+          </p>
+
+          <!-- Monument Image / Visual -->
+          <div class="mt-4 rounded-2xl overflow-hidden border-2 border-stone-200 h-48 bg-stone-100 relative group">
+            <img src="https://images.unsplash.com/photo-1585123388867-3bfe6dd4bee5?auto=format&fit=crop&w=700&q=80" 
+                 alt="Shaheed Minar in Dhaka" 
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute inset-0 bg-black/20 flex items-center justify-center">
+              <span class="bg-white/90 px-3 py-1 rounded-full font-fun text-xs font-bold text-stone-800">
+                Central Shaheed Minar • Dhaka
+              </span>
+            </div>
+          </div>
+
+          <!-- Flower Offering Clicker -->
+          <div class="mt-4">
+            <button onclick="offerLanguageFlower()" class="w-full py-3 bg-sunYellow hover:bg-mangoYellow text-amber-950 font-fun font-bold text-sm rounded-2xl shadow transition-transform active:scale-95 flex items-center justify-center gap-2">
+              <span>🌸 Lay a Flower at the Monument (+1 Star)</span>
+            </button>
+            <p id="flowerStatusText" class="text-xs font-bold text-candyGreen mt-2">
+              0 flowers offered today with love!
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Activity: Bangla Word Bubble Pop -->
+      <div class="mt-10 bg-white rounded-3xl p-6 sm:p-8 border-4 border-bubbleGum shadow-bouncy text-center">
+        <span class="inline-block px-3 py-1 rounded-full bg-bubbleGum text-white font-fun font-bold text-xs uppercase mb-2">
+          Mini Activity
+        </span>
+        <h3 class="font-fun font-bold text-2xl text-pink-950">
+          Bangla Word Bubble Pop! 🎈
+        </h3>
+        <p class="text-xs sm:text-sm font-semibold text-stone-600 max-w-lg mx-auto mt-1 mb-6">
+          Tap each colorful bubble to hear its sweet Bangla sound and learn what it means!
+        </p>
+
+        <!-- 4 Word Bubbles -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          
+          <button onclick="popWordBubble('মা (Maa)', 'Mother', 'The sweetest first word every baby learns!')" class="p-5 bg-rose-50 hover:bg-rose-100 rounded-3xl border-3 border-candyRed/60 shadow-sm transition-all transform hover:scale-105 active:scale-95 text-center">
+            <span class="text-4xl block mb-2">🤱</span>
+            <span class="font-fun text-2xl font-bold text-candyRed block">মা</span>
+            <span class="font-quicksand font-bold text-xs text-stone-700">Maa (Mother)</span>
+          </button>
+
+          <button onclick="popWordBubble('ভালোবাসি (Bhalobashi)', 'I Love You', 'Said to parents, friends, and sweet green trees!')" class="p-5 bg-amber-50 hover:bg-amber-100 rounded-3xl border-3 border-mangoYellow/60 shadow-sm transition-all transform hover:scale-105 active:scale-95 text-center">
+            <span class="text-4xl block mb-2">💖</span>
+            <span class="font-fun text-2xl font-bold text-mangoYellow block">ভালোবাসি</span>
+            <span class="font-quicksand font-bold text-xs text-stone-700">Bhalobashi (Love)</span>
+          </button>
+
+          <button onclick="popWordBubble('গল্প (Golpo)', 'Story', 'Magical tales of river kings and clever birds!')" class="p-5 bg-emerald-50 hover:bg-emerald-100 rounded-3xl border-3 border-candyGreen/60 shadow-sm transition-all transform hover:scale-105 active:scale-95 text-center">
+            <span class="text-4xl block mb-2">📖</span>
+            <span class="font-fun text-2xl font-bold text-candyGreen block">গল্প</span>
+            <span class="font-quicksand font-bold text-xs text-stone-700">Golpo (Story)</span>
+          </button>
+
+          <button onclick="popWordBubble('খেলা (Khela)', 'Play & Fun', 'Running through green fields with your best friends!')" class="p-5 bg-sky-50 hover:bg-sky-100 rounded-3xl border-3 border-cloudBlue/60 shadow-sm transition-all transform hover:scale-105 active:scale-95 text-center">
+            <span class="text-4xl block mb-2">⚽</span>
+            <span class="font-fun text-2xl font-bold text-oceanBlue block">খেলা</span>
+            <span class="font-quicksand font-bold text-xs text-stone-700">Khela (Play)</span>
+          </button>
+
+        </div>
+
+        <!-- Bubble Word Meaning Box -->
+        <div id="wordBubbleOutput" class="mt-6 p-4 rounded-2xl bg-creamSoft border-2 border-sunYellow text-center">
+          <span class="font-fun font-bold text-base text-amber-950">👈 Tap a bubble above to hear it speak and pop!</span>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 5. STOP 3: THE BIG ELECTION & BANGABANDHU'S BIG VOICE (1970 - MARCH 1971) -->
+  <section id="stop-speech" class="py-14 sm:py-20 px-4 relative bg-[#FFF4E6]">
+    <div class="max-w-5xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="text-center mb-10">
+        <span class="inline-block px-4 py-1 rounded-full bg-mangoYellow text-amber-950 font-fun font-bold text-xs uppercase tracking-wider mb-2">
+          Stop 3 • The Big Voice
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-fun font-bold text-amber-950">
+          The Big Election & The Racecourse Thunder 📢
+        </h2>
+        <p class="font-quicksand font-bold text-stone-600 text-sm sm:text-base max-w-xl mx-auto mt-2">
+          When millions of people vote, fairness says you listen. But the rulers didn't want to listen!
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+        
+        <!-- Left: Simple Story in Comic Steps -->
+        <div class="md:col-span-7 space-y-4">
+          
+          <div class="bg-white p-5 rounded-3xl border-4 border-mangoYellow shadow-bouncy">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-2xl">🗳️</span>
+              <h4 class="font-fun font-bold text-lg text-amber-950">1. The People Voted!</h4>
+            </div>
+            <p class="text-xs sm:text-sm font-semibold text-stone-600 leading-relaxed">
+              In December 1970, people lined up peacefully. Bangabandhu Sheikh Mujibur Rahman won an enormous democratic victory (167 out of 169 seats!). But the generals refused to hand over leadership.
+            </p>
+          </div>
+
+          <div class="bg-white p-5 rounded-3xl border-4 border-candyRed shadow-bouncy">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-2xl">⚡</span>
+              <h4 class="font-fun font-bold text-lg text-candyRedDark">2. March 7, 1971: The Big Speech!</h4>
+            </div>
+            <p class="text-xs sm:text-sm font-semibold text-stone-600 leading-relaxed">
+              Two million people gathered at the Racecourse field in Dhaka. Bangabandhu stepped up in his black vest and spoke with thunderous courage:
+            </p>
+            <div class="mt-3 p-3 rounded-2xl bg-amber-50 border-2 border-dashed border-amber-400">
+              <p class="font-fun text-base sm:text-lg text-candyRed font-bold">
+                "Build a fortress in every house! Turn everything you have into resistance!"
+              </p>
+              <span class="text-[11px] font-bold text-stone-500 block mt-1">UNESCO recognizes this speech as a world treasure!</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right: Megaphone Booster Toy -->
+        <div class="md:col-span-5 bg-white rounded-3xl p-6 sm:p-8 border-4 border-candyGreen shadow-bouncy text-center relative">
+          <div class="w-20 h-20 rounded-full bg-emerald-100 border-3 border-candyGreen mx-auto flex items-center justify-center text-5xl mb-4 animate-wiggle">
+            📣
+          </div>
+
+          <h3 class="font-fun font-bold text-2xl text-candyGreenDark">Megaphone Booster!</h3>
+          <p class="text-xs font-semibold text-stone-600 mt-1 mb-4">
+            Tap the button to boost the brave voice and hear the cheering crowd!
+          </p>
+
+          <button id="boostVoiceBtn" onclick="boostBangabandhuVoice()" class="w-full py-3.5 bg-candyGreen hover:bg-candyGreenDark text-white font-fun font-bold text-base rounded-2xl shadow transition-transform active:scale-95 flex items-center justify-center gap-2">
+            <span>🔊 Boost Voice & Cheer!</span>
+          </button>
+
+          <!-- Voice Output Bubble -->
+          <div id="voiceQuoteBox" class="mt-4 p-4 rounded-2xl bg-emerald-50 border-2 border-candyGreen/30 text-xs sm:text-sm font-bold text-candyGreenDark min-h-[70px] flex items-center justify-center">
+            Tap the button to hear Bangabandhu's brave message!
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 6. STOP 4: THE 9-MONTH FREEDOM WAR (1971 LIBERATION WAR) -->
+  <section id="stop-war" class="py-14 sm:py-20 px-4 relative">
+    <div class="max-w-6xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="text-center mb-12">
+        <span class="inline-block px-4 py-1 rounded-full bg-candyGreen text-white font-fun font-bold text-xs uppercase tracking-wider mb-2">
+          Stop 4 • 1971 Superheroes
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-fun font-bold text-candyGreenDark">
+          The 9-Month Freedom Journey 🦸
+        </h2>
+        <p class="font-quicksand font-bold text-stone-600 text-sm sm:text-base max-w-xl mx-auto mt-2">
+          Ordinary people—farmers, students, mothers, and doctors—teamed up to protect their homes!
+        </p>
+      </div>
+
+      <!-- 5-Station Illustrated Comic Trail -->
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+        
+        <!-- Step 1 -->
+        <div class="bg-white rounded-3xl p-5 border-4 border-candyRed shadow-bouncy text-center flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-full bg-red-100 text-candyRed font-fun font-bold text-lg mx-auto flex items-center justify-center mb-2">
+              1
+            </div>
+            <span class="text-3xl block mb-2">🌅</span>
+            <h4 class="font-fun font-bold text-base text-candyRedDark">March 26: Independence!</h4>
+            <p class="text-xs font-semibold text-stone-600 mt-2 leading-relaxed">
+              When peace was broken, Bangabandhu declared Bangladesh independent! Everyone promised to stay brave.
+            </p>
+          </div>
+          <span class="mt-3 inline-block px-2 py-0.5 rounded-full bg-rose-100 text-candyRed font-bold text-[10px]">
+            Shadhinota Dibosh
+          </span>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="bg-white rounded-3xl p-5 border-4 border-candyGreen shadow-bouncy text-center flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-full bg-emerald-100 text-candyGreen font-fun font-bold text-lg mx-auto flex items-center justify-center mb-2">
+              2
+            </div>
+            <span class="text-3xl block mb-2">🌾</span>
+            <h4 class="font-fun font-bold text-base text-candyGreenDark">The Mukti Bahini</h4>
+            <p class="text-xs font-semibold text-stone-600 mt-2 leading-relaxed">
+              Everyday superheroes! Farmers knew every canal, boys carried secret messages, and sisters nursed wounded heroes.
+            </p>
+          </div>
+          <span class="mt-3 inline-block px-2 py-0.5 rounded-full bg-emerald-100 text-candyGreen font-bold text-[10px]">
+            Freedom Fighters
+          </span>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="bg-white rounded-3xl p-5 border-4 border-mangoYellow shadow-bouncy text-center flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-full bg-amber-100 text-amber-900 font-fun font-bold text-lg mx-auto flex items-center justify-center mb-2">
+              3
+            </div>
+            <span class="text-3xl block mb-2">📻</span>
+            <h4 class="font-fun font-bold text-base text-amber-950">Secret Radio Station</h4>
+            <p class="text-xs font-semibold text-stone-600 mt-2 leading-relaxed">
+              Swadhin Bangla Betar Kendra broadcast secret songs and funny satirical plays that kept everyone's spirits burning bright!
+            </p>
+          </div>
+          <span class="mt-3 inline-block px-2 py-0.5 rounded-full bg-amber-100 text-amber-900 font-bold text-[10px]">
+            Secret Signals
+          </span>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="bg-white rounded-3xl p-5 border-4 border-cloudBlue shadow-bouncy text-center flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-full bg-sky-100 text-oceanBlue font-fun font-bold text-lg mx-auto flex items-center justify-center mb-2">
+              4
+            </div>
+            <span class="text-3xl block mb-2">🤝</span>
+            <h4 class="font-fun font-bold text-base text-sky-950">Friends Around the World</h4>
+            <p class="text-xs font-semibold text-stone-600 mt-2 leading-relaxed">
+              India opened its doors to refugees. In New York, George Harrison and Ravi Shankar sang "Concert for Bangladesh"!
+            </p>
+          </div>
+          <span class="mt-3 inline-block px-2 py-0.5 rounded-full bg-sky-100 text-sky-950 font-bold text-[10px]">
+            Global Kindness
+          </span>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="bg-white rounded-3xl p-5 border-4 border-sunYellow shadow-bouncy text-center flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-full bg-amber-100 text-amber-800 font-fun font-bold text-lg mx-auto flex items-center justify-center mb-2">
+              5
+            </div>
+            <span class="text-3xl block mb-2">✌️</span>
+            <h4 class="font-fun font-bold text-base text-amber-900">Dec 16: Victory Day!</h4>
+            <p class="text-xs font-semibold text-stone-600 mt-2 leading-relaxed">
+              After 9 months of courage, peace was won! Cycle rickshaw bells rang everywhere as the new country smiled!
+            </p>
+          </div>
+          <span class="mt-3 inline-block px-2 py-0.5 rounded-full bg-amber-100 text-amber-900 font-bold text-[10px]">
+            Bijoy Dibosh
+          </span>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 7. MINI-GAME 1: FREEDOM COURIER BOAT RIDE -->
+  <section id="game-boat" class="py-14 sm:py-20 px-4 relative bg-[#E6F7FF]">
+    <div class="max-w-4xl mx-auto text-center">
+      
+      <!-- Game Header -->
+      <span class="inline-block px-4 py-1 rounded-full bg-cloudBlue text-white font-fun font-bold text-xs uppercase tracking-wider mb-2">
+        Mini-Game 1
+      </span>
+      <h2 class="text-3xl sm:text-5xl font-fun font-bold text-sky-950">
+        Freedom Courier Boat Ride! ⛵
+      </h2>
+      <p class="font-quicksand font-bold text-stone-600 text-sm sm:text-base max-w-xl mx-auto mt-2 mb-6">
+        Steer the little wooden boat left and right! Catch floating <strong>Water Lilies (Shapla) 🌺</strong> and dodge the swirling river whirlpools 🌀!
+      </p>
+
+      <!-- Game Frame -->
+      <div class="bg-white rounded-3xl p-5 sm:p-7 border-4 border-cloudBlue shadow-bouncy max-w-2xl mx-auto">
+        
+        <!-- Scoreboard -->
+        <div class="flex items-center justify-between pb-3 mb-3 border-b-2 border-sky-100 font-fun text-sm sm:text-base">
+          <div class="text-candyGreen font-bold flex items-center gap-1">
+            <span>🌺 Shapla:</span>
+            <span id="boatScore">0</span>
+          </div>
+          <div class="text-candyRed font-bold flex items-center gap-1">
+            <span>❤️ Lives:</span>
+            <span id="boatLives">3</span>
+          </div>
+          <button onclick="startBoatGame()" class="px-4 py-1 rounded-full bg-sunYellow hover:bg-mangoYellow text-amber-950 font-bold text-xs shadow">
+            Reset Game 🔄
+          </button>
+        </div>
+
+        <!-- Canvas River Area -->
+        <div class="relative w-full aspect-[4/3] bg-gradient-to-b from-sky-300 via-sky-200 to-emerald-200 rounded-2xl overflow-hidden border-3 border-sky-400">
+          <canvas id="boatGameCanvas" class="w-full h-full block"></canvas>
+
+          <!-- Start / Game Over Screen Overlay -->
+          <div id="boatOverlay" class="absolute inset-0 bg-sky-950/60 flex flex-col items-center justify-center p-6 text-white text-center">
+            <span class="text-6xl mb-2 animate-bounce">⛵</span>
+            <h3 id="boatOverlayTitle" class="font-fun text-2xl sm:text-3xl font-bold">Ready to Row?</h3>
+            <p id="boatOverlayText" class="text-xs sm:text-sm font-semibold max-w-sm mt-1 mb-4 text-sky-100">
+              Collect 5 Water Lilies to deliver secret medicine to the river camp!
+            </p>
+            <button onclick="startBoatGame()" class="px-8 py-3 bg-candyRed hover:bg-candyRedDark text-white font-fun font-bold text-base rounded-full shadow-lg transition-transform active:scale-95">
+              Start Rowing! 🚀
+            </button>
+          </div>
+        </div>
+
+        <!-- On-Screen Left / Right Controls for Touch & Mouse -->
+        <div class="flex justify-center gap-6 mt-4">
+          <button onmousedown="moveBoat('left')" ontouchstart="moveBoat('left')" class="w-20 h-14 bg-sky-100 hover:bg-sky-200 border-3 border-cloudBlue rounded-2xl font-fun font-bold text-2xl text-sky-950 shadow active:scale-90 flex items-center justify-center select-none">
+            ⬅️
+          </button>
+          <button onmousedown="moveBoat('right')" ontouchstart="moveBoat('right')" class="w-20 h-14 bg-sky-100 hover:bg-sky-200 border-3 border-cloudBlue rounded-2xl font-fun font-bold text-2xl text-sky-950 shadow active:scale-90 flex items-center justify-center select-none">
+            ➡️
+          </button>
+        </div>
+        <span class="text-[11px] font-bold text-stone-400 block mt-2">
+          (You can also use the Left and Right Arrow keys on your keyboard!)
+        </span>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 8. MINI-GAME 2: SUPER MEMORY MATCH CHALLENGE -->
+  <section id="game-memory" class="py-14 sm:py-20 px-4 relative">
+    <div class="max-w-4xl mx-auto text-center">
+      
+      <!-- Section Header -->
+      <span class="inline-block px-4 py-1 rounded-full bg-bubbleGum text-white font-fun font-bold text-xs uppercase tracking-wider mb-2">
+        Mini-Game 2
+      </span>
+      <h2 class="text-3xl sm:text-5xl font-fun font-bold text-pink-950">
+        Super Memory Match Challenge! 🃏
+      </h2>
+      <p class="font-quicksand font-bold text-stone-600 text-sm sm:text-base max-w-xl mx-auto mt-2 mb-6">
+        Can you find all the matching pairs of Bangladesh treasures? Match them all to get a huge confetti shower!
+      </p>
+
+      <!-- Match Stats -->
+      <div class="flex items-center justify-center gap-6 mb-6 font-fun text-sm sm:text-base">
+        <span class="px-4 py-1.5 rounded-full bg-white border-2 border-bubbleGum text-pink-950 font-bold shadow-sm">
+          Matches: <span id="memoryPairsFound" class="text-candyRed">0</span> / 6
+        </span>
+        <button onclick="initMemoryGame()" class="px-4 py-1.5 rounded-full bg-sunYellow hover:bg-mangoYellow text-amber-950 font-bold text-xs shadow-sm transition-transform active:scale-95">
+          Shuffle Cards 🔀
+        </button>
+      </div>
+
+      <!-- 12 Cards Grid -->
+      <div id="memoryGrid" class="grid grid-cols-3 sm:grid-cols-4 gap-3 sm:gap-4 max-w-xl mx-auto perspective-1000">
+        <!-- Generated by JavaScript -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 9. STOP 5: THE SECRET MEANING OF THE RED & GREEN FLAG -->
+  <section id="stop-flag" class="py-14 sm:py-20 px-4 relative bg-[#EBF9F1]">
+    <div class="max-w-5xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="text-center mb-10">
+        <span class="inline-block px-4 py-1 rounded-full bg-candyGreen text-white font-fun font-bold text-xs uppercase tracking-wider mb-2">
+          Stop 5 • The Flag Story
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-fun font-bold text-candyGreenDark">
+          The Secret Meaning of the Red & Green Flag 🇧🇩
+        </h2>
+        <p class="font-quicksand font-bold text-stone-600 text-sm sm:text-base max-w-xl mx-auto mt-2">
+          Every color on this famous flag tells a magical story about hope and nature!
+        </p>
+      </div>
+
+      <!-- 2 Flag Meaning Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+        
+        <!-- Emerald Green Field -->
+        <div class="bg-white rounded-3xl p-6 border-4 border-candyGreen shadow-bouncy flex items-start gap-4">
+          <div class="w-16 h-16 rounded-2xl bg-emerald-100 border-2 border-candyGreen flex items-center justify-center text-4xl shrink-0">
+            🌿
+          </div>
+          <div>
+            <h3 class="font-fun font-bold text-xl text-candyGreenDark">Lush Emerald Green Field</h3>
+            <p class="text-xs sm:text-sm font-semibold text-stone-600 leading-relaxed mt-1">
+              Represents Bangladesh’s fertile green delta, endless rice fields, thick rainforests, and the youthful energy of its people!
+            </p>
+          </div>
+        </div>
+
+        <!-- Crimson Red Circle -->
+        <div class="bg-white rounded-3xl p-6 border-4 border-candyRed shadow-bouncy flex items-start gap-4">
+          <div class="w-16 h-16 rounded-2xl bg-rose-100 border-2 border-candyRed flex items-center justify-center text-4xl shrink-0">
+            ☀️
+          </div>
+          <div>
+            <h3 class="font-fun font-bold text-xl text-candyRedDark">The Crimson Red Sun</h3>
+            <p class="text-xs sm:text-sm font-semibold text-stone-600 leading-relaxed mt-1">
+              Represents a brand-new morning sun rising over Bengal, and honors all the brave heroes who gave their lives for freedom.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Flag Painter & Sticker Canvas Studio -->
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border-4 border-candyGreen shadow-bouncy text-center">
+        <h3 class="font-fun font-bold text-2xl text-candyGreenDark">
+          Interactive: Paint the National Flag & Sticker Studio! 🎨
+        </h3>
+        <p class="text-xs sm:text-sm font-semibold text-stone-600 max-w-lg mx-auto mt-1 mb-4">
+          Pick a color, draw on the canvas, add cute stickers, or tap "Auto-Paint Flag" to see official proportions!
+        </p>
+
+        <!-- Studio Controls Bar -->
+        <div class="flex flex-wrap items-center justify-between gap-3 pb-3 mb-4 border-b-2 border-stone-100 font-fun text-xs">
+          
+          <!-- Colors -->
+          <div class="flex items-center gap-1.5">
+            <span class="font-bold text-stone-700">Paint Color:</span>
+            <button onclick="setFlagBrushColor('#00A86B')" class="w-7 h-7 rounded-full bg-candyGreen ring-2 ring-emerald-600 hover:scale-110 transition-transform" title="Green"></button>
+            <button onclick="setFlagBrushColor('#FF4757')" class="w-7 h-7 rounded-full bg-candyRed hover:scale-110 transition-transform" title="Red"></button>
+            <button onclick="setFlagBrushColor('#FFD32A')" class="w-7 h-7 rounded-full bg-sunYellow hover:scale-110 transition-transform" title="Yellow"></button>
+            <button onclick="setFlagBrushColor('#FFFFFF')" class="w-7 h-7 rounded-full bg-white border-2 border-stone-300 hover:scale-110 transition-transform" title="Eraser"></button>
+          </div>
+
+          <!-- Cute Stickers -->
+          <div class="flex items-center gap-1.5">
+            <span class="font-bold text-stone-700">Add Sticker:</span>
+            <button onclick="stampFlagCanvas('🐯')" class="px-2 py-1 bg-amber-50 border border-amber-300 rounded-lg text-lg hover:scale-110 transition-transform">🐯</button>
+            <button onclick="stampFlagCanvas('🌺')" class="px-2 py-1 bg-rose-50 border border-rose-300 rounded-lg text-lg hover:scale-110 transition-transform">🌺</button>
+            <button onclick="stampFlagCanvas('⭐')" class="px-2 py-1 bg-yellow-50 border border-yellow-300 rounded-lg text-lg hover:scale-110 transition-transform">⭐</button>
+            <button onclick="stampFlagCanvas('🕊️')" class="px-2 py-1 bg-sky-50 border border-sky-300 rounded-lg text-lg hover:scale-110 transition-transform">🕊️</button>
+          </div>
+
+        </div>
+
+        <!-- Drawing Canvas -->
+        <div class="relative w-full aspect-[16/10] bg-white rounded-2xl border-4 border-dashed border-stone-300 overflow-hidden shadow-inner">
+          <canvas id="flagPainterCanvas" class="w-full h-full cursor-crosshair touch-none"></canvas>
+        </div>
+
+        <!-- Studio Buttons -->
+        <div class="flex flex-wrap items-center justify-between gap-3 mt-4">
+          <div class="flex gap-2">
+            <button onclick="autoPaintOfficialFlag()" class="px-4 py-2 bg-candyGreen hover:bg-candyGreenDark text-white font-fun font-bold text-xs sm:text-sm rounded-xl shadow transition-transform active:scale-95 flex items-center gap-1.5">
+              <span>🇧🇩 Auto-Paint Official Flag</span>
+            </button>
+            <button onclick="clearFlagCanvas()" class="px-4 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 font-fun font-bold text-xs sm:text-sm rounded-xl transition-all">
+              Clear Canvas 🧹
+            </button>
+          </div>
+
+          <button onclick="downloadFlagArtwork()" class="px-6 py-2 bg-candyRed hover:bg-candyRedDark text-white font-fun font-bold text-xs sm:text-sm rounded-xl shadow transition-transform active:scale-95 flex items-center gap-1.5">
+            <i class="ph ph-download-simple font-bold"></i>
+            <span>Download My Artwork 📥</span>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 10. STOP 6: THE WONDER-WORLD OF BANGLADESH TODAY & FEED THE TIGER -->
+  <section id="stop-culture" class="py-14 sm:py-20 px-4 relative">
+    <div class="max-w-5xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="text-center mb-10">
+        <span class="inline-block px-4 py-1 rounded-full bg-candyPurple text-white font-fun font-bold text-xs uppercase tracking-wider mb-2">
+          Stop 6 • Living Wonder
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-fun font-bold text-purple-950">
+          The Wonder-World of Bangladesh Today! 🌟
+        </h2>
+        <p class="font-quicksand font-bold text-stone-600 text-sm sm:text-base max-w-xl mx-auto mt-2">
+          Explore delicious treats and special traditions! Tap the sweets to feed Shadhin the Tiger!
+        </p>
+      </div>
+
+      <!-- 4 Discovery Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+        
+        <div class="bg-white rounded-3xl p-5 border-4 border-amber-300 shadow-bouncy text-center">
+          <span class="text-4xl block mb-2">🐯</span>
+          <h4 class="font-fun font-bold text-base text-amber-950">Swimming Tigers</h4>
+          <p class="text-xs font-semibold text-stone-600 mt-1">
+            Royal Bengal Tigers in the Sundarbans can swim across wide salty rivers with ease!
+          </p>
+        </div>
+
+        <div class="bg-white rounded-3xl p-5 border-4 border-candyGreen shadow-bouncy text-center">
+          <span class="text-4xl block mb-2">🧵</span>
+          <h4 class="font-fun font-bold text-base text-candyGreenDark">Nakshi Kantha</h4>
+          <p class="text-xs font-semibold text-stone-600 mt-1">
+            Grandmothers stitch colorful quilts telling stories of peacocks, lotus flowers, and village weddings.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-3xl p-5 border-4 border-candyRed shadow-bouncy text-center">
+          <span class="text-4xl block mb-2">🚲</span>
+          <h4 class="font-fun font-bold text-base text-candyRedDark">UNESCO Rickshaws</h4>
+          <p class="text-xs font-semibold text-stone-600 mt-1">
+            Now official UNESCO world-heritage art! Every back-plate is a rolling painting of joy.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-3xl p-5 border-4 border-cloudBlue shadow-bouncy text-center">
+          <span class="text-4xl block mb-2">🏏</span>
+          <h4 class="font-fun font-bold text-base text-sky-950">Cricket Fever</h4>
+          <p class="text-xs font-semibold text-stone-600 mt-1">
+            Whenever the Bangladesh "Tigers" cricket team plays, the whole nation cheers with roaring pride!
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Interactive: Feed Shadhin Bengali Sweets -->
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border-4 border-mangoYellow shadow-bouncy text-center max-w-2xl mx-auto">
+        <h3 class="font-fun font-bold text-2xl text-amber-950">
+          Feed Shadhin Some Yummy Bengali Sweets! 🍧
+        </h3>
+        <p class="text-xs sm:text-sm font-semibold text-stone-600 mt-1 mb-6">
+          Tap a treat to feed the hungry tiger cub and make him roar with happiness!
+        </p>
+
+        <!-- Tiger Reaction Mascot -->
+        <div class="w-24 h-24 rounded-full bg-amber-100 border-4 border-mangoYellow mx-auto flex items-center justify-center text-5xl mb-4 relative shadow-inner">
+          <span id="tigerFace">🐯</span>
+        </div>
+        <p id="tigerReactionText" class="font-fun font-bold text-base text-amber-900 mb-6">
+          "I have an empty tummy! What sweet treat do you have?"
+        </p>
+
+        <!-- 3 Sweet Buttons -->
+        <div class="grid grid-cols-3 gap-3">
+          
+          <button onclick="feedTiger('Rosogolla', '⚪ Yummy spongy cottage cheese balls soaked in sweet sugar syrup!')" class="p-3 bg-amber-50 hover:bg-amber-100 rounded-2xl border-2 border-mangoYellow shadow transition-transform active:scale-95">
+            <span class="text-3xl block mb-1">⚪</span>
+            <span class="font-fun font-bold text-xs text-amber-950 block">Rosogolla</span>
+          </button>
+
+          <button onclick="feedTiger('Mishti Doi', '🏺 Creamy sweet pink yogurt baked in a clay pot!')" class="p-3 bg-amber-50 hover:bg-amber-100 rounded-2xl border-2 border-mangoYellow shadow transition-transform active:scale-95">
+            <span class="text-3xl block mb-1">🏺</span>
+            <span class="font-fun font-bold text-xs text-amber-950 block">Mishti Doi</span>
+          </button>
+
+          <button onclick="feedTiger('Pitha', '🥟 Winter rice cakes stuffed with coconut and sweet date molasses!')" class="p-3 bg-amber-50 hover:bg-amber-100 rounded-2xl border-2 border-mangoYellow shadow transition-transform active:scale-95">
+            <span class="text-3xl block mb-1">🥟</span>
+            <span class="font-fun font-bold text-xs text-amber-950 block">Winter Pitha</span>
+          </button>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 11. MINI-GAME 3: SUPER KID HISTORY CHAMPION QUIZ -->
+  <section id="game-quiz" class="py-14 sm:py-20 px-4 relative bg-[#FFF9E6]">
+    <div class="max-w-3xl mx-auto text-center">
+      
+      <!-- Section Header -->
+      <span class="inline-block px-4 py-1 rounded-full bg-sunYellow text-amber-950 font-fun font-bold text-xs uppercase tracking-wider mb-2">
+        Mini-Game 3
+      </span>
+      <h2 class="text-3xl sm:text-5xl font-fun font-bold text-amber-950">
+        Super Kid History Champion Quiz! 🏆
+      </h2>
+      <p class="font-quicksand font-bold text-stone-600 text-sm sm:text-base max-w-xl mx-auto mt-2 mb-8">
+        Show what you learned! Answer 4 cheerful questions to win the ultimate golden trophy!
+      </p>
+
+      <!-- Quiz Card Container -->
+      <div class="bg-white rounded-3xl p-6 sm:p-10 border-4 border-mangoYellow shadow-bouncy text-left relative">
+        
+        <!-- Question Tracker -->
+        <div class="flex items-center justify-between pb-3 mb-4 border-b-2 border-stone-100 font-fun text-xs sm:text-sm">
+          <span class="font-bold text-stone-500">
+            Question <span id="quizCurrentNum" class="text-candyRed">1</span> of 4
+          </span>
+          <span class="font-bold text-candyGreen">
+            Score: <span id="quizScoreText">0</span> ⭐
+          </span>
+        </div>
+
+        <!-- Question Title -->
+        <h3 id="quizQuestionTitle" class="font-fun font-bold text-xl sm:text-2xl text-stone-800 mb-6">
+          What is the capital city of Bangladesh?
+        </h3>
+
+        <!-- Options Container -->
+        <div id="quizOptionsContainer" class="space-y-3 font-fun">
+          <!-- Filled by JavaScript -->
+        </div>
+
+        <!-- Quiz Feedback Box -->
+        <div id="quizFeedbackBox" class="mt-4 p-3 rounded-2xl hidden text-center font-fun font-bold text-sm">
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 12. THE GRAND FINALE: PRINT YOUR JUNIOR FREEDOM EXPLORER CERTIFICATE -->
+  <section id="certificate" class="py-16 sm:py-24 px-4 relative">
+    <div class="max-w-4xl mx-auto text-center">
+      
+      <!-- Section Header -->
+      <span class="inline-block px-4 py-1 rounded-full bg-candyRed text-white font-fun font-bold text-xs uppercase tracking-wider mb-2">
+        The Grand Finale
+      </span>
+      <h2 class="text-3xl sm:text-5xl font-fun font-bold text-candyRedDark">
+        Print Your Junior Freedom Explorer Badge! 📜
+      </h2>
+      <p class="font-quicksand font-bold text-stone-600 text-sm sm:text-base max-w-xl mx-auto mt-2 mb-8">
+        You've explored the history, rowed the boat, and learned the brave stories! Type your name to create your official colorful diploma!
+      </p>
+
+      <!-- Certificate Form Input -->
+      <div class="bg-white rounded-3xl p-6 border-4 border-candyGreen shadow-bouncy max-w-xl mx-auto mb-10 text-left font-fun">
+        <div class="mb-4">
+          <label class="block text-xs font-bold text-stone-700 mb-1">Your Full Name (Little Hero):</label>
+          <input type="text" id="certInputName" value="Little Brave Explorer" oninput="updateKidCertificate()" class="w-full px-4 py-3 rounded-2xl bg-amber-50 border-2 border-sunYellow text-stone-800 text-base font-bold focus:outline-none focus:border-candyGreen">
+        </div>
+
+        <div class="mb-4">
+          <label class="block text-xs font-bold text-stone-700 mb-1">Choose Your Official Title:</label>
+          <select id="certInputTitle" onchange="updateKidCertificate()" class="w-full px-4 py-3 rounded-2xl bg-amber-50 border-2 border-sunYellow text-stone-800 text-sm font-bold focus:outline-none focus:border-candyGreen">
+            <option value="Brave Storyteller">🐯 Brave Storyteller</option>
+            <option value="Peace Ambassador">🕊️ Peace Ambassador</option>
+            <option value="Tiger Cub Hero">🌟 Tiger Cub Hero</option>
+            <option value="River Keeper">🛶 River Keeper</option>
+          </select>
+        </div>
+
+        <div class="flex justify-center">
+          <button onclick="printKidCertificate()" class="w-full py-3.5 bg-candyGreen hover:bg-candyGreenDark text-white font-fun font-bold text-base rounded-2xl shadow transition-transform active:scale-95 flex items-center justify-center gap-2">
+            <span>🎉 Celebrate & Print My Certificate</span>
+            <span>🖨️</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Printable Certificate Canvas Box -->
+      <div id="printableKidCert" class="bg-gradient-to-b from-[#FFFDF2] to-[#FFF7D9] p-8 sm:p-14 rounded-3xl border-8 border-dashed border-sunYellow shadow-2xl relative text-center overflow-hidden">
+        
+        <!-- Corner Medals -->
+        <div class="text-3xl absolute top-3 left-3">🇧🇩</div>
+        <div class="text-3xl absolute top-3 right-3">🐯</div>
+        <div class="text-3xl absolute bottom-3 left-3">🌺</div>
+        <div class="text-3xl absolute bottom-3 right-3">⭐</div>
+
+        <div class="max-w-xl mx-auto space-y-4">
+          
+          <div class="w-20 h-20 rounded-full bg-sunYellow border-4 border-amber-600 flex items-center justify-center mx-auto text-4xl shadow-md">
+            🏅
+          </div>
+
+          <span class="inline-block px-3 py-1 rounded-full bg-candyGreen text-white font-fun font-bold text-xs uppercase tracking-widest">
+            Official Junior Freedom Explorer Academy
+          </span>
+
+          <h3 class="font-fun font-bold text-2xl sm:text-4xl text-candyRedDark">
+            Certificate of Bravery & Kindness
+          </h3>
+
+          <p class="font-quicksand font-bold text-stone-500 text-sm">
+            This certifies that our wonderful friend
+          </p>
+
+          <div id="certDisplayName" class="font-fun text-3xl sm:text-5xl font-bold text-candyGreenDark py-1 border-b-4 border-dashed border-sunYellow inline-block px-6">
+            Little Brave Explorer
+          </div>
+
+          <p class="font-quicksand font-bold text-stone-700 text-xs sm:text-sm max-w-md mx-auto leading-relaxed pt-2">
+            has learned the inspiring stories of Bangladesh's 1952 Language Movement, the 1971 Liberation War, and promised to keep courage, kindness, and love for nature alive!
+          </p>
+
+          <div class="inline-block px-5 py-2 rounded-2xl bg-white border-2 border-mangoYellow shadow-sm font-fun font-bold text-base sm:text-lg text-amber-950 mt-2">
+            Title Awarded: <span id="certDisplayTitle" class="text-candyRed">Brave Storyteller</span>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4 pt-6 mt-6 border-t-2 border-dashed border-amber-300 font-fun text-xs text-stone-600">
+            <div>
+              <span class="text-2xl block mb-0.5">🐯</span>
+              <span class="font-bold text-amber-950 block">Shadhin The Tiger</span>
+              <span class="text-[10px]">Royal Mascot</span>
+            </div>
+            <div>
+              <span class="text-2xl block mb-0.5">🇧🇩</span>
+              <span class="font-bold text-candyGreen block">Joy Bangla!</span>
+              <span class="text-[10px]">Bangladesh Forever</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="pt-12 pb-10 px-4 border-t-4 border-sunYellow text-center bg-white">
+    <div class="max-w-2xl mx-auto space-y-3">
+      <div class="text-4xl">🐯 🇧🇩 🐦</div>
+      <h4 class="font-fun font-bold text-xl text-candyGreenDark">
+        "Shadhinota Mane Shobai Shundor Bhabe Bacha!"
+      </h4>
+      <p class="font-quicksand font-bold text-stone-600 text-xs sm:text-sm">
+        Freedom means every child, river, and tree can grow happy, safe, and free!
+      </p>
+      <div class="pt-4 text-[11px] font-bold text-stone-400">
+        Bangladesh Kids Adventure • Joyful Learning Edition
+      </div>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT LOGIC: AUDIO ENGINE, STARS, BOAT GAME, MEMORY GAME, FLAG PAINTER, QUIZ -->
+  <script>
+    // -------------------------------------------------------------
+    // 1. WEB AUDIO API SOUND ENGINE
+    // -------------------------------------------------------------
+    let audioContext = null;
+    let isSoundMuted = false;
+
+    function getAudioCtx() {
+      if (!audioContext) {
+        const AudioCtxClass = window.AudioContext || window.webkitAudioContext;
+        audioContext = new AudioCtxClass();
+      }
+      if (audioContext.state === 'suspended') {
+        audioContext.resume();
+      }
+      return audioContext;
+    }
+
+    // Happy Xylophone Note
+    function playNote(frequency = 523.25, duration = 0.35, type = 'sine') {
+      if (isSoundMuted) return;
+      try {
+        const ctx = getAudioCtx();
+        const now = ctx.currentTime;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+
+        osc.type = type;
+        osc.frequency.setValueAtTime(frequency, now);
+
+        gain.gain.setValueAtTime(0.2, now);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+
+        osc.start(now);
+        osc.stop(now + duration);
+      } catch (e) {}
+    }
+
+    // Coin/Star Sound
+    function playCoinSound() {
+      playNote(987.77, 0.15, 'sine');
+      setTimeout(() => playNote(1318.51, 0.25, 'sine'), 100);
+    }
+
+    // Boing Jump Sound
+    function playBoingSound() {
+      if (isSoundMuted) return;
+      try {
+        const ctx = getAudioCtx();
+        const now = ctx.currentTime;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(220, now);
+        osc.frequency.exponentialRampToValueAtTime(580, now + 0.25);
+
+        gain.gain.setValueAtTime(0.25, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+
+        osc.start(now);
+        osc.stop(now + 0.3);
+      } catch (e) {}
+    }
+
+    // Cheerful Clapping Fanfare
+    function playVictoryFanfare() {
+      const notes = [523.25, 659.25, 783.99, 1046.50];
+      notes.forEach((freq, idx) => {
+        setTimeout(() => playNote(freq, 0.3, 'triangle'), idx * 120);
+      });
+    }
+
+    // Toggle Sound Button
+    function toggleSoundFx() {
+      isSoundMuted = !isSoundMuted;
+      const icon = document.getElementById('soundIcon');
+      const text = document.getElementById('soundText');
+      if (isSoundMuted) {
+        icon.textContent = '🔇';
+        text.textContent = 'Muted';
+      } else {
+        icon.textContent = '🔊';
+        text.textContent = 'Sound ON';
+        playNote(659.25, 0.2);
+      }
+    }
+
+    // -------------------------------------------------------------
+    // 2. STAR COLLECTOR SYSTEM
+    // -------------------------------------------------------------
+    let totalStars = 0;
+
+    function addStars(num = 1) {
+      totalStars += num;
+      const counter = document.getElementById('starCounter');
+      counter.textContent = totalStars;
+      playCoinSound();
+
+      // Fun little bounce on counter
+      counter.classList.add('scale-150', 'text-candyRed');
+      setTimeout(() => {
+        counter.classList.remove('scale-150', 'text-candyRed');
+      }, 300);
+    }
+
+    // -------------------------------------------------------------
+    // 3. SCROLL PROGRESS TRACKER
+    // -------------------------------------------------------------
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      const bar = document.getElementById('scrollProgressBar');
+      if (bar) {
+        bar.style.width = scrolled + '%';
+      }
+    });
+
+    // -------------------------------------------------------------
+    // 4. HERO SECTION INTERACTION
+    // -------------------------------------------------------------
+    let mascotsGreeted = false;
+    function meetMascots() {
+      if (!mascotsGreeted) {
+        mascotsGreeted = true;
+        addStars(5);
+        playVictoryFanfare();
+        triggerConfetti();
+        const btn = document.getElementById('meetMascotsBtn');
+        btn.innerHTML = '<span>🎉 You Met Shadhin & Tuntuni! (+5 Stars)</span>';
+        btn.classList.remove('bg-candyRed');
+        btn.classList.add('bg-candyGreen');
+      } else {
+        playBoingSound();
+      }
+    }
+
+    // -------------------------------------------------------------
+    // 5. STOP 1: ROW THE RIVER BOAT
+    // -------------------------------------------------------------
+    let boatClicks = 0;
+    function rowRiverBoat() {
+      boatClicks++;
+      playBoingSound();
+      const splash = document.getElementById('splashText');
+      const boat = document.getElementById('tapBoatBtn');
+
+      // Random wiggle
+      boat.style.transform = `translateX(${Math.sin(boatClicks) * 20}px) scale(1.2)`;
+      setTimeout(() => {
+        boat.style.transform = 'translateX(0px) scale(1)';
+      }, 200);
+
+      splash.style.opacity = '1';
+      setTimeout(() => {
+        splash.style.opacity = '0';
+      }, 1000);
+
+      addStars(1);
+    }
+
+    // -------------------------------------------------------------
+    // 6. STOP 2: SHAHEED MINAR FLOWER & BANGLA BUBBLE POP
+    // -------------------------------------------------------------
+    let flowersOffered = 0;
+    function offerLanguageFlower() {
+      flowersOffered++;
+      addStars(1);
+      playNote(659.25, 0.4);
+      document.getElementById('flowerStatusText').textContent = 
+        `🌸 ${flowersOffered} beautiful flowers offered today with love!`;
+      triggerConfetti(0.7);
+    }
+
+    function popWordBubble(bangla, english, meaning) {
+      playBoingSound();
+      addStars(1);
+
+      // Web Speech API Voice synthesis if available
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utter = new SpeechSynthesisUtterance(bangla.split(' ')[0]);
+        utter.lang = 'bn-BD';
+        utter.rate = 0.9;
+        window.speechSynthesis.speak(utter);
+      }
+
+      const output = document.getElementById('wordBubbleOutput');
+      output.innerHTML = `
+        <span class="font-fun text-2xl font-bold text-candyRed block mb-1">🎈 ${bangla}</span>
+        <span class="font-fun text-lg font-bold text-candyGreen block">"${english}"</span>
+        <p class="text-xs font-semibold text-stone-700 mt-1">${meaning}</p>
+      `;
+    }
+
+    // -------------------------------------------------------------
+    // 7. STOP 3: BANGABANDHU MEGAPHONE BOOSTER
+    // -------------------------------------------------------------
+    const bangabandhuQuotes = [
+      "📢 'Build a fortress in every single house!'",
+      "📢 'The struggle this time is for our freedom!'",
+      "📢 'Since we have given blood, we will give more blood, but we will free this land!'",
+      "📢 'Turn everything you have into resistance!'"
+    ];
+    let quoteIndex = 0;
+
+    function boostBangabandhuVoice() {
+      playVictoryFanfare();
+      addStars(2);
+      const box = document.getElementById('voiceQuoteBox');
+      box.textContent = bangabandhuQuotes[quoteIndex];
+      quoteIndex = (quoteIndex + 1) % bangabandhuQuotes.length;
+      triggerConfetti(0.6);
+    }
+
+    // -------------------------------------------------------------
+    // 8. MINI-GAME 1: FREEDOM COURIER BOAT CANVAS GAME
+    // -------------------------------------------------------------
+    const boatCanvas = document.getElementById('boatGameCanvas');
+    const boatCtx = boatCanvas.getContext('2d');
+    let boatAnimationId = null;
+
+    let boatGameRunning = false;
+    let boatX = 150;
+    let boatScore = 0;
+    let boatLives = 3;
+    let waterItems = [];
+    let spawnTimer = 0;
+
+    function resizeBoatCanvas() {
+      const rect = boatCanvas.getBoundingClientRect();
+      boatCanvas.width = rect.width;
+      boatCanvas.height = rect.height;
+      boatX = boatCanvas.width / 2;
+    }
+
+    function startBoatGame() {
+      resizeBoatCanvas();
+      boatGameRunning = true;
+      boatScore = 0;
+      boatLives = 3;
+      waterItems = [];
+      document.getElementById('boatScore').textContent = '0';
+      document.getElementById('boatLives').textContent = '3';
+      document.getElementById('boatOverlay').style.display = 'none';
+      playNote(523.25, 0.2);
+
+      if (boatAnimationId) cancelAnimationFrame(boatAnimationId);
+      boatGameLoop();
+    }
+
+    function moveBoat(direction) {
+      if (!boatGameRunning) return;
+      playNote(440, 0.08);
+      if (direction === 'left') {
+        boatX = Math.max(30, boatX - 45);
+      } else {
+        boatX = Math.min(boatCanvas.width - 30, boatX + 45);
+      }
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') moveBoat('left');
+      if (e.key === 'ArrowRight') moveBoat('right');
+    });
+
+    function boatGameLoop() {
+      if (!boatGameRunning) return;
+
+      boatCtx.clearRect(0, 0, boatCanvas.width, boatCanvas.height);
+
+      // Draw River Water Waves
+      boatCtx.fillStyle = '#68C5DB';
+      boatCtx.fillRect(0, 0, boatCanvas.width, boatCanvas.height);
+
+      // Spawn items
+      spawnTimer++;
+      if (spawnTimer % 45 === 0) {
+        const isWhirlpool = Math.random() < 0.35;
+        waterItems.push({
+          x: Math.random() * (boatCanvas.width - 60) + 30,
+          y: -20,
+          type: isWhirlpool ? 'whirlpool' : 'shapla',
+          emoji: isWhirlpool ? '🌀' : '🌺',
+          speed: isWhirlpool ? 3.2 : 2.5
+        });
+      }
+
+      // Update & Draw Items
+      for (let i = waterItems.length - 1; i >= 0; i--) {
+        const it = waterItems[i];
+        it.y += it.speed;
+
+        boatCtx.font = '26px sans-serif';
+        boatCtx.fillText(it.emoji, it.x - 13, it.y);
+
+        // Check Collision with Boat
+        const dist = Math.hypot(it.x - boatX, it.y - (boatCanvas.height - 35));
+        if (dist < 32) {
+          if (it.type === 'shapla') {
+            boatScore++;
+            addStars(1);
+            playCoinSound();
+            document.getElementById('boatScore').textContent = boatScore;
+            waterItems.splice(i, 1);
+
+            if (boatScore >= 5) {
+              winBoatGame();
+              return;
             }
+          } else {
+            boatLives--;
+            playNote(180, 0.3, 'sawtooth');
+            document.getElementById('boatLives').textContent = boatLives;
+            waterItems.splice(i, 1);
+
+            if (boatLives <= 0) {
+              endBoatGame(false);
+              return;
+            }
+          }
+          continue;
         }
 
-        // Accordion expand/collapse
-        function toggleAccordion(id) {
-            const target = document.getElementById(id);
-            const isVisible = target.style.display === 'block';
-            target.style.display = isVisible ? 'none' : 'block';
+        // Out of screen
+        if (it.y > boatCanvas.height + 30) {
+          waterItems.splice(i, 1);
         }
+      }
 
-        // Canvas Drawing Setup
-        const canvas = document.getElementById('sketchPad');
-        const context = canvas.getContext('2d');
-        let isDrawing = false;
-        let penColor = '#006a4e';
+      // Draw Boat
+      boatCtx.font = '38px sans-serif';
+      boatCtx.fillText('⛵', boatX - 19, boatCanvas.height - 25);
 
-        function startDrawing(event) {
-            isDrawing = true;
-            paint(event);
+      boatAnimationId = requestAnimationFrame(boatGameLoop);
+    }
+
+    function winBoatGame() {
+      boatGameRunning = false;
+      playVictoryFanfare();
+      triggerConfetti();
+      addStars(5);
+      const overlay = document.getElementById('boatOverlay');
+      overlay.style.display = 'flex';
+      document.getElementById('boatOverlayTitle').textContent = '🎉 Mission Accomplished!';
+      document.getElementById('boatOverlayText').textContent = 'You delivered all 5 Water Lilies safely past the whirlpools! +5 Bonus Stars!';
+    }
+
+    function endBoatGame(won) {
+      boatGameRunning = false;
+      const overlay = document.getElementById('boatOverlay');
+      overlay.style.display = 'flex';
+      document.getElementById('boatOverlayTitle').textContent = '🌊 Splashed in a Whirlpool!';
+      document.getElementById('boatOverlayText').textContent = 'The boat spun around! Want to try rowing again?';
+    }
+
+    // -------------------------------------------------------------
+    // 9. MINI-GAME 2: SUPER MEMORY MATCH CHALLENGE
+    // -------------------------------------------------------------
+    const memoryIcons = ['🐯', '🇧🇩', '🏛️', '🌺', '🚲', '⛵'];
+    let memoryCards = [];
+    let flippedCards = [];
+    let matchedPairs = 0;
+    let lockMemoryBoard = false;
+
+    function initMemoryGame() {
+      const grid = document.getElementById('memoryGrid');
+      grid.innerHTML = '';
+      matchedPairs = 0;
+      document.getElementById('memoryPairsFound').textContent = '0';
+      flippedCards = [];
+      lockMemoryBoard = false;
+
+      // Duplicate and shuffle
+      memoryCards = [...memoryIcons, ...memoryIcons].sort(() => Math.random() - 0.5);
+
+      memoryCards.forEach((icon, index) => {
+        const card = document.createElement('div');
+        card.className = 'aspect-square bg-white rounded-2xl border-4 border-bubbleGum shadow-bouncy flex items-center justify-center text-3xl sm:text-4xl cursor-pointer select-none transition-all transform hover:scale-105 active:scale-95';
+        card.dataset.icon = icon;
+        card.dataset.index = index;
+        card.innerHTML = '❓';
+        card.onclick = () => flipMemoryCard(card);
+        grid.appendChild(card);
+      });
+    }
+
+    function flipMemoryCard(card) {
+      if (lockMemoryBoard || card.classList.contains('matched') || flippedCards.includes(card)) return;
+
+      playNote(600, 0.1);
+      card.innerHTML = card.dataset.icon;
+      card.classList.add('bg-rose-50', 'border-candyRed');
+      flippedCards.push(card);
+
+      if (flippedCards.length === 2) {
+        checkMemoryMatch();
+      }
+    }
+
+    function checkMemoryMatch() {
+      const [card1, card2] = flippedCards;
+      if (card1.dataset.icon === card2.dataset.icon) {
+        // Matched
+        playCoinSound();
+        addStars(2);
+        card1.classList.add('matched', 'bg-emerald-100', 'border-candyGreen');
+        card2.classList.add('matched', 'bg-emerald-100', 'border-candyGreen');
+        matchedPairs++;
+        document.getElementById('memoryPairsFound').textContent = matchedPairs;
+        flippedCards = [];
+
+        if (matchedPairs === 6) {
+          playVictoryFanfare();
+          triggerConfetti();
+          addStars(5);
         }
+      } else {
+        // Not matched
+        lockMemoryBoard = true;
+        setTimeout(() => {
+          card1.innerHTML = '❓';
+          card2.innerHTML = '❓';
+          card1.classList.remove('bg-rose-50', 'border-candyRed');
+          card2.classList.remove('bg-rose-50', 'border-candyRed');
+          flippedCards = [];
+          lockMemoryBoard = false;
+        }, 800);
+      }
+    }
 
-        function stopDrawing() {
-            isDrawing = false;
-            context.beginPath();
+    // -------------------------------------------------------------
+    // 10. STOP 5: FLAG PAINTER & STICKER STUDIO
+    // -------------------------------------------------------------
+    const flagCanvas = document.getElementById('flagPainterCanvas');
+    const flagCtx = flagCanvas.getContext('2d');
+    let isFlagDrawing = false;
+    let flagBrushColor = '#00A86B';
+
+    function initFlagPainter() {
+      const rect = flagCanvas.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      flagCanvas.width = rect.width * dpr;
+      flagCanvas.height = rect.height * dpr;
+      flagCtx.scale(dpr, dpr);
+      clearFlagCanvas();
+    }
+
+    function setFlagBrushColor(color) {
+      flagBrushColor = color;
+      playNote(550, 0.1);
+    }
+
+    function getFlagCanvasPos(e) {
+      const rect = flagCanvas.getBoundingClientRect();
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      return {
+        x: clientX - rect.left,
+        y: clientY - rect.top
+      };
+    }
+
+    function startFlagDraw(e) {
+      isFlagDrawing = true;
+      drawOnFlag(e);
+    }
+
+    function stopFlagDraw() {
+      isFlagDrawing = false;
+      flagCtx.beginPath();
+    }
+
+    function drawOnFlag(e) {
+      if (!isFlagDrawing) return;
+      e.preventDefault();
+      const pos = getFlagCanvasPos(e);
+
+      flagCtx.lineWidth = flagBrushColor === '#FFFFFF' ? 26 : 10;
+      flagCtx.lineCap = 'round';
+      flagCtx.lineJoin = 'round';
+      flagCtx.strokeStyle = flagBrushColor;
+
+      flagCtx.lineTo(pos.x, pos.y);
+      flagCtx.stroke();
+      flagCtx.beginPath();
+      flagCtx.moveTo(pos.x, pos.y);
+    }
+
+    flagCanvas.addEventListener('mousedown', startFlagDraw);
+    flagCanvas.addEventListener('mousemove', drawOnFlag);
+    flagCanvas.addEventListener('mouseup', stopFlagDraw);
+    flagCanvas.addEventListener('mouseleave', stopFlagDraw);
+
+    flagCanvas.addEventListener('touchstart', startFlagDraw, { passive: false });
+    flagCanvas.addEventListener('touchmove', drawOnFlag, { passive: false });
+    flagCanvas.addEventListener('touchend', stopFlagDraw);
+
+    function stampFlagCanvas(emoji) {
+      playBoingSound();
+      addStars(1);
+      const rect = flagCanvas.getBoundingClientRect();
+      const rx = Math.random() * (rect.width - 60) + 30;
+      const ry = Math.random() * (rect.height - 60) + 30;
+      flagCtx.font = '36px sans-serif';
+      flagCtx.fillText(emoji, rx, ry);
+    }
+
+    function autoPaintOfficialFlag() {
+      playVictoryFanfare();
+      triggerConfetti(0.5);
+      addStars(2);
+      const rect = flagCanvas.getBoundingClientRect();
+
+      // Lush Green field
+      flagCtx.fillStyle = '#006A4E';
+      flagCtx.fillRect(0, 0, rect.width, rect.height);
+
+      // Offset Red Sun (slightly to the left of center for flying flag proportions)
+      flagCtx.beginPath();
+      flagCtx.arc(rect.width * 0.45, rect.height * 0.5, rect.height * 0.32, 0, Math.PI * 2);
+      flagCtx.fillStyle = '#F42A41';
+      flagCtx.fill();
+    }
+
+    function clearFlagCanvas() {
+      playBoingSound();
+      const rect = flagCanvas.getBoundingClientRect();
+      flagCtx.fillStyle = '#FFFFFF';
+      flagCtx.fillRect(0, 0, rect.width, rect.height);
+    }
+
+    function downloadFlagArtwork() {
+      playCoinSound();
+      const link = document.createElement('a');
+      link.download = 'My-Bangladesh-Flag-Artwork.png';
+      link.href = flagCanvas.toDataURL('image/png');
+      link.click();
+    }
+
+    // -------------------------------------------------------------
+    // 11. STOP 6: FEED SHADHIN THE TIGER
+    // -------------------------------------------------------------
+    function feedTiger(sweetName, description) {
+      playBoingSound();
+      addStars(1);
+      const face = document.getElementById('tigerFace');
+      face.textContent = '😋';
+      setTimeout(() => face.textContent = '🐯', 700);
+
+      document.getElementById('tigerReactionText').innerHTML = `
+        <span class="text-candyGreen font-bold">"Nom Nom Nom! I LOVE ${sweetName}!"</span><br>
+        <span class="text-xs text-stone-600 font-semibold">${description}</span>
+      `;
+    }
+
+    // -------------------------------------------------------------
+    // 12. MINI-GAME 3: SUPER KID HISTORY QUIZ
+    // -------------------------------------------------------------
+    const quizQuestions = [
+      {
+        q: "What is the capital city of Bangladesh?",
+        options: ["Dhaka", "Chittagong", "London", "Tokyo"],
+        correct: 0,
+        hint: "Dhaka is famous for colorful rickshaws and historic gates!"
+      },
+      {
+        q: "What do the brave students defend in 1952?",
+        options: ["Their toys", "Their mother language (Bangla)", "A gold coin", "A giant clock"],
+        correct: 1,
+        hint: "Now celebrated as International Mother Language Day on Feb 21!"
+      },
+      {
+        q: "When is Bangladesh's Victory Day (Bijoy Dibosh)?",
+        options: ["January 1", "December 16", "July 4", "October 31"],
+        correct: 1,
+        hint: "On December 16, 1971, peace was won after 9 months of bravery!"
+      },
+      {
+        q: "What animal swims through the Sundarbans mangrove rivers?",
+        options: ["Polar Bear", "Royal Bengal Tiger", "Desert Camel", "Kangaroo"],
+        correct: 1,
+        hint: "Shadhin is one of them!"
+      }
+    ];
+
+    let currentQuizIndex = 0;
+    let quizScore = 0;
+
+    function renderQuizQuestion() {
+      const cur = quizQuestions[currentQuizIndex];
+      document.getElementById('quizCurrentNum').textContent = currentQuizIndex + 1;
+      document.getElementById('quizQuestionTitle').textContent = cur.q;
+
+      const container = document.getElementById('quizOptionsContainer');
+      container.innerHTML = '';
+
+      cur.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = "w-full p-4 text-left rounded-2xl bg-amber-50 hover:bg-sunYellow/30 border-3 border-amber-300 font-fun font-bold text-base text-stone-800 transition-all transform active:scale-98 flex items-center justify-between";
+        btn.innerHTML = `<span>${opt}</span><span class="text-xl">👉</span>`;
+        btn.onclick = () => handleQuizAnswer(idx);
+        container.appendChild(btn);
+      });
+
+      const feedback = document.getElementById('quizFeedbackBox');
+      feedback.className = "mt-4 p-3 rounded-2xl hidden text-center font-fun font-bold text-sm";
+    }
+
+    function handleQuizAnswer(selectedIdx) {
+      const cur = quizQuestions[currentQuizIndex];
+      const feedback = document.getElementById('quizFeedbackBox');
+      feedback.classList.remove('hidden');
+
+      if (selectedIdx === cur.correct) {
+        quizScore++;
+        addStars(3);
+        playVictoryFanfare();
+        document.getElementById('quizScoreText').textContent = quizScore;
+        feedback.className = "mt-4 p-3 rounded-2xl bg-emerald-100 border-2 border-candyGreen text-candyGreenDark text-center font-fun font-bold text-sm block";
+        feedback.innerHTML = `🌟 Hooray! That's correct! ${cur.hint}`;
+      } else {
+        playNote(220, 0.25, 'sawtooth');
+        feedback.className = "mt-4 p-3 rounded-2xl bg-rose-100 border-2 border-candyRed text-candyRedDark text-center font-fun font-bold text-sm block";
+        feedback.innerHTML = `🌱 Almost! The right answer was "${cur.options[cur.correct]}". ${cur.hint}`;
+      }
+
+      // Next Question after short delay
+      setTimeout(() => {
+        currentQuizIndex++;
+        if (currentQuizIndex < quizQuestions.length) {
+          renderQuizQuestion();
+        } else {
+          showQuizComplete();
         }
+      }, 1500);
+    }
 
-        function paint(event) {
-            if (!isDrawing) return;
+    function showQuizComplete() {
+      playVictoryFanfare();
+      triggerConfetti();
+      addStars(5);
+      const container = document.getElementById('quizOptionsContainer');
+      document.getElementById('quizQuestionTitle').textContent = "🏆 You Are a Bangladesh History Champion!";
+      container.innerHTML = `
+        <div class="text-center p-6 bg-emerald-50 rounded-2xl border-3 border-candyGreen">
+          <span class="text-6xl block mb-2">🎉</span>
+          <p class="font-fun font-bold text-lg text-candyGreenDark">You scored ${quizScore} out of 4 correct!</p>
+          <p class="text-xs font-semibold text-stone-600 mt-1 mb-4">You have earned your Junior Freedom Explorer Diploma below!</p>
+          <a href="#certificate" class="inline-block px-6 py-2.5 bg-candyRed hover:bg-candyRedDark text-white font-fun font-bold text-sm rounded-full shadow">
+            Claim Your Certificate 📜
+          </a>
+        </div>
+      `;
+      document.getElementById('quizFeedbackBox').classList.add('hidden');
+    }
 
-            const bounds = canvas.getBoundingClientRect();
-            const posX = (event.clientX || (event.touches && event.touches[0].clientX)) - bounds.left;
-            const posY = (event.clientY || (event.touches && event.touches[0].clientY)) - bounds.top;
+    // -------------------------------------------------------------
+    // 13. CERTIFICATE GENERATOR & CONFETTI
+    // -------------------------------------------------------------
+    function updateKidCertificate() {
+      const name = document.getElementById('certInputName').value || 'Little Brave Explorer';
+      const title = document.getElementById('certInputTitle').value;
 
-            context.lineWidth = 8;
-            context.lineCap = 'round';
-            context.strokeStyle = penColor;
+      document.getElementById('certDisplayName').textContent = name;
+      document.getElementById('certDisplayTitle').textContent = title;
+    }
 
-            context.lineTo(posX, posY);
-            context.stroke();
-            context.beginPath();
-            context.moveTo(posX, posY);
-        }
+    function printKidCertificate() {
+      playVictoryFanfare();
+      triggerConfetti();
+      window.print();
+    }
 
-        function selectColor(colorCode) {
-            penColor = colorCode;
-        }
+    function triggerConfetti(originY = 0.6) {
+      if (typeof confetti === 'function') {
+        confetti({
+          particleCount: 60,
+          spread: 80,
+          origin: { y: originY },
+          colors: ['#00A86B', '#FF4757', '#FFD32A', '#2ED573', '#FF78C4', '#70A1FF']
+        });
+      }
+    }
 
-        function resetCanvas() {
-            context.clearRect(0, 0, canvas.width, canvas.height);
-        }
+    // -------------------------------------------------------------
+    // INITIALIZATION ON WINDOW LOAD
+    // -------------------------------------------------------------
+    window.onload = function() {
+      initMemoryGame();
+      initFlagPainter();
+      renderQuizQuestion();
 
-        // Desktop mouse listeners
-        canvas.addEventListener('mousedown', startDrawing);
-        canvas.addEventListener('mouseup', stopDrawing);
-        canvas.addEventListener('mousemove', paint);
-        canvas.addEventListener('mouseleave', stopDrawing);
-
-        // Mobile touch listeners
-        canvas.addEventListener('touchstart', function(e) { e.preventDefault(); startDrawing(e); });
-        canvas.addEventListener('touchend', stopDrawing);
-        canvas.addEventListener('touchmove', function(e) { e.preventDefault(); paint(e); });
-    </script>
-
+      window.addEventListener('resize', () => {
+        initFlagPainter();
+      });
+    };
+  </script>
 </body>
 </html>
