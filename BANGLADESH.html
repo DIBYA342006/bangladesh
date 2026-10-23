@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bangladesh History & Liberation Study Guide</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f7f9fa;
+            color: #2c3e50;
+            line-height: 1.65;
+        }
+
+        /* Top Banner & Navigation */
+        .top-stripe {
+            background-color: #c91c32;
+            height: 6px;
+            width: 100%;
+        }
+
+        nav {
+            background: #006a4e;
+            color: white;
+            padding: 14px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        nav h1 {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 16px;
+        }
+
+        nav a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 6px 10px;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+
+        /* Hero / Header */
+        header {
+            background: linear-gradient(135deg, #00523c, #006a4e);
+            color: white;
+            padding: 50px 20px 40px;
+            text-align: center;
+        }
+
+        header h2 {
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        header p {
+            max-width: 760px;
+            margin: 0 auto 18px;
+            font-size: 1.05rem;
+            color: #d1fae5;
+        }
+
+        .jump-links {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .jump-links a {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            text-decoration: none;
+        }
+
+        .jump-links a:hover {
+            background: white;
+            color: #006a4e;
+        }
+
+        /* Main Container */
+        .wrapper {
+            max-width: 960px;
+            margin: 30px auto;
+            padding: 0 16px;
+        }
+
+        /* Standard Card Section */
+        section {
+            background: #ffffff;
+            border: 1px solid #e1e8ed;
+            border-radius: 8px;
+            padding: 28px;
+            margin-bottom: 28px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+        }
+
+        section h2 {
+            color: #006a4e;
+            font-size: 1.55rem;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #eef2f5;
+            margin-bottom: 18px;
+        }
+
+        section h3 {
+            color: #c91c32;
+            font-size: 1.15rem;
+            margin: 20px 0 10px;
+        }
+
+        p {
+            margin-bottom: 14px;
+            color: #444;
+            font-size: 1rem;
+        }
+
+        /* Structured Facts & Callout Boxes */
+        .callout-box {
+            background: #edf7f3;
+            border-left: 4px solid #006a4e;
+            padding: 14px 18px;
+            border-radius: 0 6px 6px 0;
+            margin: 18px 0;
+            font-size: 0.95rem;
+        }
+
+        .callout-box strong {
+            color: #00523c;
+        }
+
+        /* Timeline list styling */
+        .history-list {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .history-item {
+            padding: 14px 16px 14px 20px;
+            border-left: 3px solid #c91c32;
+            background: #fafbfc;
+            margin-bottom: 12px;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .history-item strong {
+            display: inline-block;
+            color: #111;
+            margin-bottom: 4px;
+        }
+
+        /* Key Terms Table */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.92rem;
+        }
+
+        .data-table th, .data-table td {
+            border: 1px solid #e1e8ed;
+            padding: 10px 14px;
+            text-align: left;
+        }
+
+        .data-table th {
+            background-color: #f1f5f8;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .data-table tr:nth-child(even) {
+            background-color: #fafbfc;
+        }
+
+        /* Accordion Collapsible Notes */
+        .accordion-btn {
+            background: #f1f5f8;
+            border: 1px solid #d8e2e9;
+            color: #2c3e50;
+            cursor: pointer;
+            padding: 12px 16px;
+            width: 100%;
+            text-align: left;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 6px;
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .accordion-btn:hover {
+            background: #e4ecf1;
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 15px 18px;
+            border: 1px solid #e1e8ed;
+            border-top: none;
+            background: white;
+            border-radius: 0 0 6px 6px;
+            font-size: 0.92rem;
+            color: #555;
+        }
+
+        /* Flashcard Grid */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 14px;
+            margin: 18px 0;
+        }
+
+        .info-card {
+            background: #ffffff;
+            border: 1px solid #e1e8ed;
+            border-radius: 6px;
+            padding: 16px;
+            border-top: 3px solid #006a4e;
+        }
+
+        .info-card h4 {
+            color: #006a4e;
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+
+        .info-card p {
+            font-size: 0.88rem;
+            margin-bottom: 0;
+            color: #555;
+        }
+
+        /* Activity Section */
+        .activity-container {
+            background: #fffdf7;
+            border: 2px dashed #d6b26d;
+            border-radius: 8px;
+            padding: 22px;
+            margin-top: 20px;
+        }
+
+        .quiz-option {
+            background: #ffffff;
+            border: 1px solid #ced4da;
+            padding: 8px 14px;
+            border-radius: 4px;
+            margin: 4px 6px 4px 0;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.15s;
+        }
+
+        .quiz-option:hover {
+            background-color: #e9ecef;
+        }
+
+        .quiz-feedback {
+            margin-top: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        /* Canvas pad */
+        #sketchPad {
+            border: 1px solid #999;
+            background: #ffffff;
+            border-radius: 4px;
+            margin: 12px 0;
+            cursor: crosshair;
+            display: block;
+        }
+
+        .tool-btn {
+            background: #006a4e;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.88rem;
+            margin-right: 6px;
+        }
+
+        .tool-btn:hover {
+            background: #004d38;
+        }
+
+        .tool-btn.btn-red {
+            background: #c91c32;
+        }
+
+        .tool-btn.btn-red:hover {
+            background: #a31527;
+        }
+
+        .tool-btn.btn-clear {
+            background: #6c757d;
+        }
+
+        .tool-btn.btn-clear:hover {
+            background: #5a6268;
+        }
+
+        /* Footer */
+        footer {
+            background: #ffffff;
+            border-top: 1px solid #e1e8ed;
+            padding: 30px 20px;
+            text-align: center;
+            color: #6c757d;
+            font-size: 0.88rem;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 650px) {
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .jump-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-stripe"></div>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <h1>Bangladesh Studies Revision Portal</h1>
+        <ul>
+            <li><a href="#movement">1952 Movement</a></li>
+            <li><a href="#war">1971 Liberation War</a></li>
+            <li><a href="#timeline">Chronology</a></li>
+            <li><a href="#symbols">National Symbols</a></li>
+            <li><a href="#quiz">Practice Quiz</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header / Banner -->
+    <header>
+        <h2>The History & Independence of Bangladesh</h2>
+        <p>A comprehensive study module outlining the 1952 Language Movement, the 1971 Liberation War, key historical leaders, and review activities.</p>
+        <div class="jump-links">
+            <a href="#movement">Language Movement</a>
+            <a href="#causes">Roots & Causes</a>
+            <a href="#war">1971 Events</a>
+            <a href="#timeline">Milestone Timeline</a>
+            <a href="#quiz">Student Activities</a>
+        </div>
+    </header>
+
+    <div class="wrapper">
+
+        <!-- Section 1: Overview & 1952 Language Movement -->
+        <section id="movement">
+            <h2>1. The Language Movement (Bhasha Andolon) — 1952</h2>
+            <p>
+                In 1952, a major movement started for protecting the mother language of Bangladeshis (Bangla). 
+                Following the 1947 partition of the Indian subcontinent, Pakistan was created in two geographically, culturally, 
+                and linguistically distinct wings: West Pakistan and East Pakistan (now Bangladesh). 
+            </p>
+            <p>
+                Despite the majority of the total population residing in East Pakistan and speaking Bengali, the central leadership 
+                declared Urdu as the sole national language of Pakistan. Students and intellectuals organized peaceful processions, 
+                demanding official recognition for Bengali.
+            </p>
+
+            <div class="callout-box">
+                <strong>Crucial Milestone:</strong> On February 21, 1952, police fired upon student protesters near Dhaka University. 
+                Martyrs including Rafiq, Salam, Barkat, and Jabbar sacrificed their lives. In recognition of this struggle, 
+                <strong>UNESCO declared February 21 as International Mother Language Day</strong>, now observed globally each year[cite: 1].
+            </div>
+
+            <p>
+                The Language Movement is regarded as the cultural seed that grew into the political demand for complete self-determination and eventual independence.
+            </p>
+        </section>
+
+        <!-- Section 2: Background Causes of the 1971 War -->
+        <section id="causes">
+            <h2>2. Background & Roots of the Conflict</h2>
+            <p>
+                The struggle was not sudden; it developed over two decades due to systemic inequality between West and East Pakistan:
+            </p>
+
+            <div class="card-grid">
+                <div class="info-card">
+                    <h4>Political Neglect</h4>
+                    <p>East Pakistan had the larger population, yet central government power and high offices were dominated by leaders in West Pakistan.</p>
+                </div>
+                <div class="info-card">
+                    <h4>Economic Disparity</h4>
+                    <p>Revenue generated from East Pakistani exports (such as raw jute and tea) was disproportionately spent on Western development projects.</p>
+                </div>
+                <div class="info-card">
+                    <h4>1970 Cyclone Response</h4>
+                    <p>When the Bhola Cyclone devastated East Pakistan in November 1970, the sluggish central relief effort alienated the Bengali population.</p>
+                </div>
+                <div class="info-card">
+                    <h4>The 1970 Elections</h4>
+                    <p>The Awami League won an outright democratic majority, yet the military regime refused to convene the assembly or transfer authority[cite: 1].</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: The 1971 Liberation War Details -->
+        <section id="war">
+            <h2>3. The 1971 Liberation War</h2>
+            <p>
+                After a long 9-month war, the people claimed their liberation[cite: 1]. The 1971 Bangladesh Liberation War 
+                was a conflict that resulted in the separation of East Pakistan and the creation of the independent 
+                nation of Bangladesh[cite: 1].
+            </p>
+
+            <h3>Core Summary Breakdown:</h3>
+            <ul class="history-list">
+                <li class="history-item">
+                    <strong>Causes:</strong> Decades of political, economic, and cultural discrimination by West Pakistan against the Bengali majority in East Pakistan culminated in the denial of power to Sheikh Mujibur Rahman's Awami League, which won the 1970 elections[cite: 1].
+                </li>
+                <li class="history-item">
+                    <strong>Conflict & Atrocities:</strong> On March 25, 1971, the Pakistani military launched <em>Operation Searchlight</em>, causing massive casualties and forcing 10 million refugees into India[cite: 1]. Sheikh Mujibur Rahman declared independence on March 26[cite: 1].
+                </li>
+                <li class="history-item">
+                    <strong>Resistance:</strong> The Bengali guerrilla force, the <em>Mukti Bahini</em>, fought the Pakistani army with training, arms, and sanctuary provided by India[cite: 1]. They operated across rivers, rural paths, and towns to disrupt military supply lines.
+                </li>
+                <li class="history-item">
+                    <strong>Indian Intervention:</strong> Following preemptive airstrikes by Pakistan on December 3, 1971, India entered the war directly, forming a joint command with the Mukti Bahini[cite: 1].
+                </li>
+                <li class="history-item">
+                    <strong>Outcome:</strong> Facing defeat, the Pakistani military surrendered unconditionally on December 16, 1971, when Lieutenant General A. A. K. Niazi signed the Instrument of Surrender in Dhaka, yielding 93,000 troops[cite: 1].
+                </li>
+            </ul>
+        </section>
+
+        <!-- Section 4: Chronological Summary Table -->
+        <section id="timeline">
+            <h2>4. Chronological Reference Table</h2>
+            <p>Use this reference table to memorize the primary dates for tests and exams:</p>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th style="width: 25%;">Date / Period</th>
+                        <th style="width: 35%;">Historical Event</th>
+                        <th style="width: 40%;">Significance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>February 21, 1952</td>
+                        <td>Language Movement Protest</td>
+                        <td>Protesters gave their lives for Bangla; recognized as International Mother Language Day[cite: 1].</td>
+                    </tr>
+                    <tr>
+                        <td>December 7, 1970</td>
+                        <td>General Elections</td>
+                        <td>Awami League won the democratic majority across Pakistan[cite: 1].</td>
+                    </tr>
+                    <tr>
+                        <td>March 7, 1971</td>
+                        <td>Historic Racecourse Speech</td>
+                        <td>Bangabandhu addressed the public: "The struggle this time is for our freedom."</td>
+                    </tr>
+                    <tr>
+                        <td>March 25, 1971</td>
+                        <td>Operation Searchlight</td>
+                        <td>Military crackdown launched in Dhaka; widespread violence began[cite: 1].</td>
+                    </tr>
+                    <tr>
+                        <td>March 26, 1971</td>
+                        <td>Declaration of Independence</td>
+                        <td>Bangladesh officially declared an independent nation (Independence Day)[cite: 1].</td>
+                    </tr>
+                    <tr>
+                        <td>April 17, 1971</td>
+                        <td>Mujibnagar Government</td>
+                        <td>First provisional government formed to lead the diplomatic and military effort.</td>
+                    </tr>
+                    <tr>
+                        <td>December 3, 1971</td>
+                        <td>Formal Joint Command</td>
+                        <td>Indian forces entered the war alongside Mukti Bahini following airstrikes[cite: 1].</td>
+                    </tr>
+                    <tr>
+                        <td>December 16, 1971</td>
+                        <td>Bijoy Dibosh (Victory Day)</td>
+                        <td>Instrument of Surrender signed; 93,000 soldiers surrendered in Dhaka[cite: 1].</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Accordion items for extra reading -->
+            <button class="accordion-btn" onclick="toggleAccordion('acc1')">
+                <span>Who were the Mukti Bahini?</span>
+                <span>+</span>
+            </button>
+            <div id="acc1" class="accordion-content">
+                The Mukti Bahini (Liberation Army) was composed of regular military soldiers, police personnel, students, farmers, and everyday citizens. They used asymmetric guerrilla tactics across the delta's rivers, disrupting transport convoys and protecting civilian areas until the formal joint advance in December[cite: 1].
+            </div>
+
+            <button class="accordion-btn" onclick="toggleAccordion('acc2')">
+                <span>What is the Shaheed Minar?</span>
+                <span>+</span>
+            </button>
+            <div id="acc2" class="accordion-content">
+                The Central Shaheed Minar in Dhaka is the national monument erected to honor the martyrs of the 1952 Language Movement. Every year on February 21 at dawn, people walk barefoot to place flowers at its base during the *Prabhat Pheri* memorial procession.
+            </div>
+        </section>
+
+        <!-- Section 5: National Symbols & Identity -->
+        <section id="symbols">
+            <h2>5. National Symbols & Significance</h2>
+            <div class="card-grid">
+                <div class="info-card">
+                    <h4>The National Flag</h4>
+                    <p>A green field representing the lush landscape of the country, with a red circle representing the rising sun and the blood sacrificed for freedom.</p>
+                </div>
+                <div class="info-card">
+                    <h4>National Emblem</h4>
+                    <p>Features the Shapla (Water Lily) resting on water, flanked on both sides by paddy sheaves and crowned by three tea leaves and four stars.</p>
+                </div>
+                <div class="info-card">
+                    <h4>National Anthem</h4>
+                    <p><em>"Amar Shonar Bangla"</em> (My Golden Bengal), written by Rabindranath Tagore in 1905, was officially adopted as the anthem in 1971.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Interactive Student Revision & Quiz -->
+        <section id="quiz">
+            <h2>6. Student Self-Assessment & Activity</h2>
+            <p>Answer the revision questions below and try your hand at sketching on the scratchpad.</p>
+
+            <div class="activity-container">
+                <h3>Question 1:</h3>
+                <p><strong>Which day is recognized worldwide by UNESCO as International Mother Language Day?</strong>[cite: 1]</p>
+                <button class="quiz-option" onclick="evaluateAnswer(this, false)">March 26</button>
+                <button class="quiz-option" onclick="evaluateAnswer(this, true)">February 21</button>
+                <button class="quiz-option" onclick="evaluateAnswer(this, false)">December 16</button>
+                <div class="quiz-feedback"></div>
+            </div>
+
+            <div class="activity-container">
+                <h3>Question 2:</h3>
+                <p><strong>What was the code name of the military operation launched on the night of March 25, 1971?</strong>[cite: 1]</p>
+                <button class="quiz-option" onclick="evaluateAnswer(this, true)">Operation Searchlight</button>
+                <button class="quiz-option" onclick="evaluateAnswer(this, false)">Operation Desert Shield</button>
+                <button class="quiz-option" onclick="evaluateAnswer(this, false)">Operation Freedom</button>
+                <div class="quiz-feedback"></div>
+            </div>
+
+            <div class="activity-container">
+                <h3>Question 3:</h3>
+                <p><strong>How many Pakistani troops surrendered at the end of the Liberation War on December 16, 1971?</strong>[cite: 1]</p>
+                <button class="quiz-option" onclick="evaluateAnswer(this, false)">45,000</button>
+                <button class="quiz-option" onclick="evaluateAnswer(this, false)">100,000</button>
+                <button class="quiz-option" onclick="evaluateAnswer(this, true)">93,000</button>
+                <div class="quiz-feedback"></div>
+            </div>
+
+            <!-- Sketch / Drawing Section -->
+            <div class="activity-container" style="margin-top: 25px;">
+                <h3>Practice Sketchpad: Bangladesh Flag Colors</h3>
+                <p style="font-size: 0.9rem; color: #555;">Use the tools below to draw the bottle-green canvas and red sun circle:</p>
+                <canvas id="sketchPad" width="460" height="260"></canvas>
+                <div>
+                    <button class="tool-btn" onclick="selectColor('#006a4e')">Green Brush</button>
+                    <button class="tool-btn btn-red" onclick="selectColor('#c91c32')">Red Brush</button>
+                    <button class="tool-btn btn-clear" onclick="resetCanvas()">Clear Pad</button>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Page Footer -->
+    <footer>
+        <p><strong>Bangladesh Studies Reference Notes</strong></p>
+        <p>Compiled for student revision, homework study, and social science exam preparation.</p>
+        <p style="margin-top: 8px; font-size: 0.8rem;">&copy; 2026 Educational Resource | Reference text adapted from verified curriculum notes[cite: 1].</p>
+    </footer>
+
+    <!-- Vanilla Javascript Logic -->
+    <script>
+        // Quiz evaluation logic
+        function evaluateAnswer(buttonElement, isCorrect) {
+            const parent = buttonElement.parentElement;
+            const feedback = parent.querySelector('.quiz-feedback');
+            feedback.style.display = 'block';
+
+            if (isCorrect) {
+                feedback.textContent = 'Correct answer! Excellent job.';
+                feedback.style.color = '#006a4e';
+            } else {
+                feedback.textContent = 'Incorrect. Review the notes above and try again.';
+                feedback.style.color = '#c91c32';
+            }
+        }
+
+        // Accordion expand/collapse
+        function toggleAccordion(id) {
+            const target = document.getElementById(id);
+            const isVisible = target.style.display === 'block';
+            target.style.display = isVisible ? 'none' : 'block';
+        }
+
+        // Canvas Drawing Setup
+        const canvas = document.getElementById('sketchPad');
+        const context = canvas.getContext('2d');
+        let isDrawing = false;
+        let penColor = '#006a4e';
+
+        function startDrawing(event) {
+            isDrawing = true;
+            paint(event);
+        }
+
+        function stopDrawing() {
+            isDrawing = false;
+            context.beginPath();
+        }
+
+        function paint(event) {
+            if (!isDrawing) return;
+
+            const bounds = canvas.getBoundingClientRect();
+            const posX = (event.clientX || (event.touches && event.touches[0].clientX)) - bounds.left;
+            const posY = (event.clientY || (event.touches && event.touches[0].clientY)) - bounds.top;
+
+            context.lineWidth = 8;
+            context.lineCap = 'round';
+            context.strokeStyle = penColor;
+
+            context.lineTo(posX, posY);
+            context.stroke();
+            context.beginPath();
+            context.moveTo(posX, posY);
+        }
+
+        function selectColor(colorCode) {
+            penColor = colorCode;
+        }
+
+        function resetCanvas() {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        // Desktop mouse listeners
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mouseup', stopDrawing);
+        canvas.addEventListener('mousemove', paint);
+        canvas.addEventListener('mouseleave', stopDrawing);
+
+        // Mobile touch listeners
+        canvas.addEventListener('touchstart', function(e) { e.preventDefault(); startDrawing(e); });
+        canvas.addEventListener('touchend', stopDrawing);
+        canvas.addEventListener('touchmove', function(e) { e.preventDefault(); paint(e); });
+    </script>
+
+</body>
+</html>
